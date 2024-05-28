@@ -1,15 +1,34 @@
-import { useRouter } from "next/router";
-import useSWR from "swr";
+'use client'
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export default function User() {
   const router = useRouter();
   const { email } = router.query;
-  const { data: user, error } = useSWR(email ? `/api/users/${email}` : null, fetcher);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (error) return <div>Falha ao carregar usuário</div>;
-  if (!user) return <div>Carregando...</div>;
+  useEffect(() => {
+    if (email) {
+      const fetchUser = async () => {
+        try {
+          const response = await fetch(`/api/users/${email}`);
+          const data = await response.json();
+          setUser(data);
+        } catch (err) {
+          setError('Falha ao carregar usuário');
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchUser();
+    }
+  }, [email]);
+
+  if (loading) return <div>Carregando...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="max-w-lg mx-auto my-10">

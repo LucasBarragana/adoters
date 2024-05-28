@@ -2,11 +2,18 @@
 import { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 
+import cities from "@/data/cities";
+import categories from "@/data/categories";
+import sizes from "@/data/sizes";
+
 export default function CreatePet() {
   const { data: session } = useSession();
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [description, setDescription] = useState("");
+  const [city, setCity] = useState("");
+  const [size, setSize] = useState("");
+  const [category, setCategory] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,19 +22,23 @@ export default function CreatePet() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, age, description }),
+      body: JSON.stringify({ name, age, description, city, category, size }),
     });
-
+  
     if (res.ok) {
       alert("Pet criado com sucesso!");
       setName("");
       setAge("");
       setDescription("");
+      setCategory("");
+      setSize("");
+      setCity("");
     } else {
       const errorData = await res.json();
       alert(`Erro: ${errorData.message}`);
     }
   };
+  
 
   if (!session) {
     return (
@@ -71,6 +82,34 @@ export default function CreatePet() {
             required
           />
         </div>
+        <div>
+          <label className="block">Tamanho</label>
+          <select value={size} onChange={(e) => setSize(e.target.value)} required>
+            <option value="">Selecione o Tamanho</option>
+            {sizes.map(s => (
+              <option key={s.value} value={s.value}>{s.label}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block">Tipo</label>
+          <select value={category} onChange={(e) => setCategory(e.target.value)} required>
+            <option value="">Selecione a Categoria</option>
+            {categories.map(cat => (
+              <option key={cat.value} value={cat.value}>{cat.label}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="block">Cidade</label>
+          <select value={city} onChange={e => setCity(e.target.value)} required>
+            <option value="">Selecione a Cidade</option>
+            {cities.map(city => (
+              <option key={city.value} value={city.value}>{city.label}</option>
+            ))}
+          </select>
+        </div>
+
         <button
           type="submit"
           className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700"

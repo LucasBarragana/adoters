@@ -12,13 +12,16 @@ export async function POST(req) {
   }
 
   try {
-    const { name, age, description } = await req.json();
+    const { name, age, description, category, size, city } = await req.json();
     const newPet = new Pet({
       name,
       age,
       description,
+      category,
+      size,
+      city,
       creator: session.user.name,
-      creatorEmail: session.user.email,
+      creatorEmail: session.user.email,           
     });
     await newPet.save();
     return new Response(JSON.stringify(newPet), { status: 201 });
@@ -26,6 +29,7 @@ export async function POST(req) {
     return new Response(JSON.stringify({ message: error.message }), { status: 400 });
   }
 }
+
 
 export async function GET() {
   await dbConnect();
