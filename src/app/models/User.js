@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -10,9 +10,29 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  image: {
+  lastName: {
     type: String,
   },
+  address: {
+    type: String,
+  },
+  postalCode: {
+    type: String,
+  },
+  phoneNumber: {
+    type: String,
+  },
+  city: {
+    type: String,
+  },
+  admin: {
+    type: Boolean,
+    default: false,
+  },
+  favorites: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Pet',
+  }],
 });
 
-export default mongoose.models.User || mongoose.model("User", UserSchema);
+export default mongoose.models.User || mongoose.model('User', UserSchema);

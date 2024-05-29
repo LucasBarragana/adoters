@@ -1,10 +1,11 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function UserPage() {
-  const { email } = useParams();
+  const router = useRouter();
+  const { email } = router.query;
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,9 +35,10 @@ export default function UserPage() {
       <h1 className="text-2xl font-bold mb-4">Informações do Usuário</h1>
       <p>Nome: {user.name}</p>
       <p>Email: {user.email}</p>
-      <p>Endereço: {user.address}</p>
-      <p>Telefone: {user.phoneNumber}</p>
-      <p>Cidade: {user.city}</p>
+      <p>Endereço: {user.address} </p>
+      <p>Telefone: {user.phoneNumber} </p>
+      <p>Cidade: {user.city} </p>
+      <p>Admin: {user.admin ? 'Sim' : 'Não'}</p>
       {/* Outras informações do usuário */}
     </div>
   );

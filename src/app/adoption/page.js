@@ -1,23 +1,26 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import cities from '@/data/cities';
 import categories from '@/data/categories';
 import sizes from '@/data/sizes';
+import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import FavoriteButton from '../components/FavoriteButton'; // Importar o componente FavoriteButton
 
 const AdoptionPage = () => {
   const [pets, setPets] = useState([]);
   const [filteredPets, setFilteredPets] = useState([]);
   const [filter, setFilter] = useState({ city: '', category: '', size: '' });
+  const { data: session } = useSession();
 
-  // Carregar os dados de pets usando fetch
   useEffect(() => {
     const fetchPets = async () => {
       try {
         const response = await fetch('/api/pets');
         const data = await response.json();
         setPets(data);
-        setFilteredPets(data); // Inicializar filteredPets com todos os pets
+        setFilteredPets(data);
       } catch (error) {
         console.error('Failed to load pets:', error);
       }
@@ -72,12 +75,18 @@ const AdoptionPage = () => {
       <div>
         {filteredPets.map(pet => (
           <div className='bg-gray-400 p-4 m-4' key={pet._id}>
-            <h2>{pet.name}</h2>
-            <p>{pet.description}</p>
-            <p>City: {pet.city}</p>
-            <p>Category: {pet.category}</p>
-            <p>Size: {pet.size}</p>
-            {/* Outras informações do pet */}
+            <div className="border p-4 rounded">
+              <h2>{pet.name}</h2>
+              <p>{pet.description}</p>
+              <p>City: {pet.city}</p>
+              <p>Category: {pet.category}</p>
+              <p>Size: {pet.size}</p>
+              <p>
+                Criado por: <Link href={`/user/${pet.creatorEmail}`} className="text-blue-500">{pet.creator}</Link>
+              </p>
+              {/* Adicionar o botão de favoritos */}
+              <FavoriteButton userId={session?.user?.email} petId={pet._id} isFavorite={pet.isFavorite} />
+            </div>
           </div>
         ))}
       </div>
