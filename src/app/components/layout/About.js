@@ -5,11 +5,11 @@ import Image from 'next/image'
 
 const About = () => {
   return (
-    <section className="text-center my-16" id="about">
+    <section className="text-center mt-[100px]" id="about">
         <h1 className='text-4xl font-semibold underline '>Nosso <span className='text-4xl font-semibold text-secundary'>Propósito</span></h1>
         <div className="absolute left-0 right-0 w-full justify-start">
-          <div className="absolute left-0 -top-[70px] text-left -z-10">
-            <Image src={'/sadcat.png'} width={109} height={189} alt={'cat'} />
+          <div className="absolute left-0 -top-[85px] text-left -z-10">
+            <Image src={'/sadcat.png'} width={107} height={195} alt={'cat'} />
           </div>
           <div className="absolute -top-[100px] right-0 -z-10">
             <Image src={'/saddog.png'} width={107} height={195} alt={'dog'} />

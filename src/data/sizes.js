@@ -1,7 +1,7 @@
 const sizes = [
-    { label: "Pequeno", value:"p"},
-    { label: "Médio", value:"m"},
-    { label: "Grande", value:"g"}
+    { label: "Pequeno", value:"P"},
+    { label: "Médio", value:"M"},
+    { label: "Grande", value:"G"}
 ]
 
 export default sizes

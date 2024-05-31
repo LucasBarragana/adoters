@@ -11,6 +11,7 @@ import Money from "../icons/Money";
 import AddPet from "../icons/AddPet";
 import Logout from "../icons/Logout";
 import More from "../icons/More";
+import Star from "../icons/star";
 
 export default function AuthLinks({ status, userName }) {
   const [admin, setAdmin] = useState(false);
@@ -61,7 +62,7 @@ export default function AuthLinks({ status, userName }) {
             <Link href="/my-pets" className="flex items-center"> Meus Pet's</Link>
           </div>
           <div className="flex items-center pl-4 hover:bg-gray-300">
-            <Pets className="mr-2" />
+            <Star className="mr-2" />
             <Link href="/favorites" className="flex items-center"> Favoritos</Link>
           </div>
           <div className="flex items-center pl-4 hover:bg-gray-300">

@@ -4,6 +4,7 @@ import './globals.css'
 import { Toaster } from "react-hot-toast";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import Forma from "./components/icons/Forma";
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] })
 
@@ -16,9 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={roboto.className}>
-          <main className="max-w-5xl mx-auto p-4">
+          <main className="max-w-7xl mx-auto p-4">
             <AppProvider>
               <Toaster />
+              <Forma />
               <Header />
               {children}
               <Footer />

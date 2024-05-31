@@ -30,7 +30,7 @@ export default function ProfileForm({ userData, onSubmit }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block">Nome</label>
+        <label className="block text-white mb-2">Nome</label>
         <input
           type="text"
           name="name"
@@ -41,7 +41,7 @@ export default function ProfileForm({ userData, onSubmit }) {
         />
       </div>
       <div>
-        <label className="block">Sobrenome</label>
+        <label className="block text-white mb-2">Sobrenome</label>
         <input
           type="text"
           name="lastName"
@@ -51,7 +51,7 @@ export default function ProfileForm({ userData, onSubmit }) {
         />
       </div>
       <div>
-        <label className="block">Endereço Completo</label>
+        <label className="block text-white mb-2">Endereço Completo</label>
         <input
           type="text"
           name="address"
@@ -61,7 +61,7 @@ export default function ProfileForm({ userData, onSubmit }) {
         />
       </div>
       <div>
-        <label className="block">CEP</label>
+        <label className="block text-white mb-2">CEP</label>
         <input
           type="text"
           name="postalCode"
@@ -71,7 +71,7 @@ export default function ProfileForm({ userData, onSubmit }) {
         />
       </div>
       <div>
-        <label className="block">Telefone Celular</label>
+        <label className="block text-white mb-2">Telefone Celular</label>
         <input
           type="text"
           name="phoneNumber"
@@ -81,7 +81,7 @@ export default function ProfileForm({ userData, onSubmit }) {
         />
       </div>
       <div>
-        <label className="block">Cidade</label>
+        <label className="block text-white mb-2">Cidade</label>
         <select name="city" value={user.city} onChange={handleChange} className="w-full border border-gray-300 p-2 rounded">
           <option value="">Selecione a Cidade</option>
           {cities.map(city => (
@@ -98,7 +98,7 @@ export default function ProfileForm({ userData, onSubmit }) {
             checked={user.admin}
             onChange={handleChange}
           />
-          <span>Caso esteja criando um abrigo, clique aqui!</span>
+          <span className='text-2xl'>Caso esteja criando um abrigo, clique aqui!</span>
         </label>
       </div>
       <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">

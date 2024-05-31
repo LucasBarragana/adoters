@@ -50,7 +50,7 @@ export default function UserProfile() {
 
   return (
     <div className="max-w-lg mx-auto my-10">
-      <h1 className="text-2xl font-bold mb-4">Meu Perfil</h1>
+      <h1 className="text-4xl font-bold mb-4 text-white">Meu Perfil</h1>
       {user ? (
         <ProfileForm userData={user} onSubmit={handleUpdate} />
       ) : (

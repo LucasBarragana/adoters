@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { addToFavorites, removeFromFavorites } from '../utils/isAdmin';
+import Heart from './icons/Heart';
+import HeartAdd from './icons/HeartAdd';
 
 const FavoriteButton = ({ userId, petId, isFavorite }) => {
   const [favorite, setFavorite] = useState(isFavorite);
@@ -20,9 +22,12 @@ const FavoriteButton = ({ userId, petId, isFavorite }) => {
   };
 
   return (
-    <button onClick={handleFavoriteClick}>
-      {favorite ? 'Remove from Favorites' : 'Add to Favorites'}
-    </button>
+    <div>
+      <button className='p-2 border-none' onClick={handleFavoriteClick}>
+        {favorite ? <HeartAdd /> : <Heart /> }
+      </button>
+    </div>
+    
   );
 };
 
