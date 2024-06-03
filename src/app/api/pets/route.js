@@ -13,7 +13,7 @@ export async function POST(req) {
   }
 
   try {
-    const { name, age, description, category, size } = await req.json();
+    const { name, age, description, category, size, image } = await req.json();
 
     // Buscar usuário para obter a cidade
     const user = await User.findOne({ email: session.user.email });
@@ -30,6 +30,7 @@ export async function POST(req) {
       city: user.city, // Usar a cidade do usuário recuperada do banco de dados
       creator: session.user.name,
       creatorEmail: session.user.email,
+      image
     });
 
     await newPet.save();

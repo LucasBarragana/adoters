@@ -2,10 +2,21 @@
 import { useState, useEffect } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import ProfileForm from '../components/layout/ProfileForm';
+import Link from 'next/link';
+import { isAdmin } from "@/app/utils/isAdmin";
 
 export default function UserProfile() {
   const { data: session, status } = useSession();
   const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(false);
+  
+  useEffect(() => {
+    async function checkAdmin() {
+      const isAdminUser = await isAdmin();
+      setAdmin(isAdminUser);
+    }
+    checkAdmin();
+  }, []);
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -50,7 +61,16 @@ export default function UserProfile() {
 
   return (
     <div className="max-w-lg mx-auto my-10">
-      <h1 className="text-4xl font-bold mb-4 text-white">Meu Perfil</h1>
+      <div className='flex justify-between items-center'>
+        <h1 className="text-4xl font-bold mb-4 text-white ">Meu Perfil</h1>
+        {admin && (
+        <div>
+          <p className='text-sm mb-1'>Doações/Horários</p>
+          <Link href="/info-shelter" className='bg-secundary text-white rounded-lg font-2xl p-2 cursor-pointer'>Info. Adicionais do Abrigo</Link>
+        </div>
+        )}
+      </div>
+      
       {user ? (
         <ProfileForm userData={user} onSubmit={handleUpdate} />
       ) : (

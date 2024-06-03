@@ -1,9 +1,9 @@
 'use client'
 import { useState, useEffect } from "react";
 import { useSession, signIn } from "next-auth/react";
-
 import categories from "@/data/categories";
 import sizes from "@/data/sizes";
+import EditableImage from "../components/layout/EditableImage";
 
 export default function CreatePet() {
   const { data: session } = useSession();
@@ -14,7 +14,6 @@ export default function CreatePet() {
   const [size, setSize] = useState("");
   const [category, setCategory] = useState("");
   const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
     if (session) {
@@ -45,7 +44,8 @@ export default function CreatePet() {
         description: formattedDescription,
         city: formattedCity,
         category,
-        size
+        size,
+        image,
       }),
     });
 
@@ -57,23 +57,12 @@ export default function CreatePet() {
       setCategory("");
       setSize("");
       setImage(null);
-      setImageUrl(null);
     } else {
       const errorData = await res.json();
       alert(`Erro: ${errorData.message}`);
     }
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
-
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImageUrl(reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
 
   if (!session) {
     return (
@@ -88,22 +77,9 @@ export default function CreatePet() {
     <div className="max-w-lg mx-auto my-10">
       <h1 className="text-4xl font-bold mb-4 text-white">Criar Novo Pet</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
+        <label className="block text-white">Nome</label>
         <div className="flex items-center">
-          <div>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="bg-gray-300 text-white p-2 rounded hover:bg-gray-700"
-            />
-          </div>
-          {imageUrl && (
-            <img
-              src={imageUrl}
-              alt="Preview"
-              style={{ height: '38px', marginLeft: '10px', objectFit: 'contain' }}
-            />
-          )}
+        <EditableImage link={image} setLink={setImage} />
         </div>
         <div>
           <label className="block text-white mb-2">Nome</label>
@@ -130,7 +106,8 @@ export default function CreatePet() {
             type="description"
             value={description}
             onChange={(e) => setDescription(capitalize(e.target.value))}
-            placeholder="Adicione algumas caracteristicas do pet"
+            placeholder="Adicione algumas caracteristicas do pet(max:100 caracteres)"
+            maxLength={100}
             required
           />
         </div>

@@ -30,16 +30,7 @@ export default function MyPets() {
 
   return (
     <div className="">
-      <h1 className="text-4xl font-bold mb-4 text-white mt-10">Meus Pets</h1>
-      {pets.length === 0 ? (
-        <div className='text-center p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative mt-40 mb-40 pt-10 pb-10 flex flex-col justify-center items-center'>
-          <Error />
-          <p className='text-2xl mt-4'>Você não tem nenhum pet criado ainda.</p>
-          <Link href="/create-pet" className='text-gray-800 underline font-semibold mt-2'>
-            Crie seu primeiro pet aqui
-          </Link>
-        </div>      
-      ) : (
+      <h1 className="text-4xl font-bold mb-4 text-white mt-10">Meus Pets</h1>      
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           {pets.map(pet => (
             <div className='p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative' key={pet._id}>
@@ -69,7 +60,6 @@ export default function MyPets() {
             </div>
           ))}
         </div>
-      )}
     </div>
   );
 }

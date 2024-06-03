@@ -4,6 +4,7 @@ import { signIn, signOut } from "next-auth/react";
 import { isAdmin } from "@/app/utils/isAdmin";
 import Link from "next/link";
 import Image from "next/image";
+import { useSession } from 'next-auth/react';
 
 import Person from "../icons/Person";
 import Pets from "../icons/Pets";
@@ -15,6 +16,7 @@ import Star from "../icons/star";
 
 export default function AuthLinks({ status, userName }) {
   const [admin, setAdmin] = useState(false);
+  const { data: session } = useSession();
   useEffect(() => {
     async function checkAdmin() {
       const isAdminUser = await isAdmin();
@@ -67,7 +69,9 @@ export default function AuthLinks({ status, userName }) {
           </div>
           <div className="flex items-center pl-4 hover:bg-gray-300">
             <Money className="mr-2" />
-            <Link href="#" className="flex items-center"> Doações</Link>
+            <Link href={`/user/${session.user.email}`} className="text-blue-500 hover:underline">
+              Página
+            </Link>
           </div>
           {admin && (
             <div className="flex items-center pl-4 hover:bg-gray-300">     

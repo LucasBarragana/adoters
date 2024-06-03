@@ -15,10 +15,10 @@ export default function UserPage() {
   const { data: session } = useSession();
 
   useEffect(() => {
-    if (id) {
+    if (session && session.user && session.user.email) {
       const fetchUser = async () => {
         try {
-          const response = await fetch(`/api/users/${id}`);
+          const response = await fetch(`/api/users/${session.user.email}`);
           const data = await response.json();
           setUser(data);
         } catch (err) {
@@ -28,7 +28,7 @@ export default function UserPage() {
 
       const fetchPets = async () => {
         try {
-          const response = await fetch(`/api/users/${id}/pets`);
+          const response = await fetch(`/api/users/${session.user.email}/pets`);
           const data = await response.json();
           setPets(data);
         } catch (err) {
@@ -40,7 +40,7 @@ export default function UserPage() {
       fetchPets();
       setLoading(false);
     }
-  }, [id]);
+  }, [session]);
 
   if (loading) return <div>Carregando...</div>;
   if (error) return <div>{error}</div>;
@@ -49,7 +49,7 @@ export default function UserPage() {
     <div className="mt-10">
       <div className='absolute right-40 top-50'>
         <div className='flex gap-4 p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg'>
-          <div className="flex flex-col items-center text-blue-800">
+          <div className="flex flex-col items-center text-blue-700">
             <p className="text-xs">ADOTADOS</p>
             <p className="text-4xl font-bold">23</p>
           </div>

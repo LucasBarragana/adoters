@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^3.1.0",
+    "@aws-sdk/client-s3": "^3.588.0",
     "@tailwindcss/forms": "^0.5.7",
     "dotenv": "^16.4.5",
     "mongodb": "^6.6.2",
@@ -19,7 +20,9 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
-    "swr": "^2.2.5"
+    "react-router-dom": "^6.23.1",
+    "swr": "^2.2.5",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "eslint": "^8",

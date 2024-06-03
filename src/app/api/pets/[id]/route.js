@@ -29,7 +29,7 @@ export async function PUT(req, { params }) {
   try {
     const pet = await Pet.findOneAndUpdate(
       { _id: id, creatorEmail: session.user.email },
-      { name, age, description, category, size, city },
+      { name, age, description, category, size, city, image },
       { new: true }
     );
 

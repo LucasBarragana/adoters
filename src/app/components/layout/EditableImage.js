@@ -32,18 +32,18 @@ export default function EditableImage({link, setLink}) {
 
   return (
     <>
+      <label className="mr-4 cursor-pointer">
+        <input type="file" className="hidden" onChange={handleFileChange} />
+        <span className="block border border-gray-300 rounded-lg p-2 text-center cursor-pointer bg-white text-grat-300">Inserir/Trocar imagem</span>
+      </label>     
       {link && (
-        <Image className="rounded-lg w-full h-full mb-1" src={link} width={250} height={250} alt={'avatar'} />
+        <Image className="rounded-lg mb-1" src={link} width={50} height={50} alt={'avatar'} />
       )}
       {!link && (
         <div className="text-center bg-gray-200 p-4 text-gray-500 rounded-lg mb-1">
           Sem imagem
         </div>
-      )}
-      <label>
-        <input type="file" className="hidden" onChange={handleFileChange} />
-        <span className="block border border-gray-300 rounded-lg p-2 text-center cursor-pointer">Trocar imagem</span>
-      </label>
+      )}       
     </>
   );
 }

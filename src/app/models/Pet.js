@@ -33,6 +33,9 @@ const PetSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    required: true,}
 });
 
 export default mongoose.models.Pet || mongoose.model("Pet", PetSchema);

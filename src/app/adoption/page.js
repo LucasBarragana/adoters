@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import React, { useState, useEffect } from 'react';
 import cities from '@/data/cities';
@@ -6,9 +6,10 @@ import categories from '@/data/categories';
 import sizes from '@/data/sizes';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import FavoriteButton from '../components/FavoriteButton'; // Importar o componente FavoriteButton
+import FavoriteButton from '../components/FavoriteButton';
 import Lupa from '../components/icons/Lupa';
 import Refresh from '../components/icons/Refresh';
+import Image from 'next/image';
 
 const AdoptionPage = () => {
   const [pets, setPets] = useState([]);
@@ -44,6 +45,22 @@ const AdoptionPage = () => {
   const clearFilter = () => {
     setFilter({ city: '', category: '', size: '' });
     setFilteredPets(pets);
+  };
+
+  const formatDescription = (description, maxLength = 40) => {
+    if (description.length <= maxLength) {
+      return description;
+    }
+    return `${description.slice(0, maxLength)}...`;
+  };
+
+  const [showFullDescription, setShowFullDescription] = useState({});
+
+  const toggleDescription = (id) => {
+    setShowFullDescription(prevState => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
   };
 
   return (
@@ -88,20 +105,34 @@ const AdoptionPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {filteredPets.map(pet => (
           <div className='p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative' key={pet._id}>
+            <div>
+              <Image className="rounded-md" src={pet.image} alt={"petImage"} width={200} height={200} />
+            </div>
             <h2 className="text-gray-800 text-2xl">{pet.name}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">              
-              <div>                
-                <p className="text-gray-800"><p className='font-semibold text-gray-800'>Sobre o pet:</p> {pet.description}</p>
-              </div>
+            <div className="mt-2">              
               <div>
-                <p className="text-gray-800 "><p className='font-semibold text-gray-800'>Cidade:</p> {pet.city}</p>
-                <p className="text-gray-800"><p className='font-semibold text-gray-800'>Categoria:</p> {pet.category}</p>
-                <p className="text-gray-800"><p className='font-semibold text-gray-800'>Porte:</p> {pet.size}</p>
+                <p className="text-gray-800">
+                  <span className='font-semibold text-gray-800'>Sobre o pet:</span> <br/>
+                  {showFullDescription[pet._id] ? pet.description : formatDescription(pet.description)}
+                  {pet.description.length > 40 && (
+                    <span className="text-blue-500 cursor-pointer" onClick={() => toggleDescription(pet._id)}>
+                      {showFullDescription[pet._id] ? ' [ver menos]' : ' [ver mais]'}
+                    </span>
+                  )}
+                </p>
+              </div>
+              <div className='flex mt-2 text-sm gap-4'>
+                <p className="text-gray-800"><span className='font-semibold text-gray-800'>Cidade:</span> {pet.city}</p>
+                <p className="text-gray-800"><span className='font-semibold text-gray-800'>Categoria:</span> {pet.category}</p>
+                <p className="text-gray-800"><span className='font-semibold text-gray-800'>Porte:</span> {pet.size}</p>
               </div>
             </div>
             <p className="text-gray-800 mt-5  bottom-0 left-0">
               Abrigo: <Link href={`/user/${pet.creatorEmail}`} className="text-black font-semibold underline">{pet.creator}</Link>
             </p>
+            <div className='w-full bg-secundary text-white cursor-pointer flex justify-center align-center rounded-lg mt-4'>
+              <Link href='#' className=''>Agendar Visita</Link>
+            </div>
             <div className="absolute top-2 right-2">
               <FavoriteButton userId={session?.user?.email} petId={pet._id} isFavorite={pet.isFavorite} />
             </div>
@@ -113,7 +144,3 @@ const AdoptionPage = () => {
 };
 
 export default AdoptionPage;
-
-
-
-          
