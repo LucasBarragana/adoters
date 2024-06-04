@@ -71,6 +71,13 @@ export default function UserPage() {
   };
 
   const handleAdoptButtonClick = (petId, petName, creatorEmail) => {
+    if (!session) {
+      <div>
+        <p>Você precisa estar logado para realizar esta ação.</p>
+      </div>;
+      return;
+    }
+    
     setSelectedPetId(petId);
     setSelectedPetName(petName);
     setSelectedPetCreatorEmail(creatorEmail);

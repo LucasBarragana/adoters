@@ -10,6 +10,7 @@ import FavoriteButton from '../components/FavoriteButton';
 import Lupa from '../components/icons/Lupa';
 import Refresh from '../components/icons/Refresh';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const AdoptionPage = () => {
   const [pets, setPets] = useState([]);
@@ -21,6 +22,7 @@ const AdoptionPage = () => {
   const [selectedPetCreatorEmail, setSelectedPetCreatorEmail] = useState('');
   const [adoptionStatus, setAdoptionStatus] = useState({});
   const { data: session } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -76,6 +78,13 @@ const AdoptionPage = () => {
   };
 
   const handleAdoptButtonClick = (petId, petName, creatorEmail) => {
+    if (!session) {
+      <div>
+        <p>Você precisa estar logado para realizar esta ação.</p>
+      </div>;
+      return;
+    }
+
     setSelectedPetId(petId);
     setSelectedPetName(petName);
     setSelectedPetCreatorEmail(creatorEmail);
@@ -114,7 +123,7 @@ const AdoptionPage = () => {
       delete updatedAdoptionStatus[selectedPetId];
       setAdoptionStatus(updatedAdoptionStatus);
       localStorage.setItem('adoptionStatus', JSON.stringify(updatedAdoptionStatus));
-    }, 60 * 1000); // 24 horas
+    }, 24 * 60 * 60 * 1000); // 24 horas
   };
 
   const handleCancelAdoption = () => {
@@ -229,4 +238,3 @@ const AdoptionPage = () => {
 };
 
 export default AdoptionPage;
-
