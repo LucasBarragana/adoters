@@ -12,17 +12,17 @@ export default function Hero() {
           para ser amado&nbsp;<br />
           <span className="">incondicionalmente</span><br />
           por um 
-          <span className="text-primary ml-4">
+          <span className="text-red-500 ml-4">
             PETLOVE
           </span>
         </h1>
-        <p className="my-6 text-gray-200 font-semibold">
+        <p className="my-6 text-white font-semibold">
           Transforme Vidas com um Ato de Amor Incondicional! 
           Adote um Animal Resgatado e Experimente a Alegria de Fazer a Diferença na Vida de um Ser Especial, 
           Enquanto Ganha um Amigo Fiel e Amoroso para Toda a Vida!
         </p>
         <div className="flex gap-4 text-sm">
-          <Link href={'/menu'} className="flex justify-center bg-white uppercase bold flex items-center gap-2 text-secundary px-4 py-2 rounded-full hover:bg-hoverSecundary">
+          <Link href={'/menu'} className="flex justify-center bg-white uppercase bold font-semibold items-center gap-2 text-secundary px-4 py-2 rounded-full hover:text-blue-500">
             Adoção consciente
             <Right />
           </Link>

@@ -3,10 +3,26 @@ import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
 import FavoriteButton from "../components/FavoriteButton";
+import Image from "next/image";
 
 export default function MyPets() {
   const { data: session } = useSession();
   const [pets, setPets] = useState([]);
+  const [showFullDescription, setShowFullDescription] = useState({});
+
+  const toggleDescription = (id) => {
+    setShowFullDescription(prevState => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
+
+  const formatDescription = (description, maxLength = 40) => {
+    if (description.length <= maxLength) {
+      return description;
+    }
+    return `${description.slice(0, maxLength)}...`;
+  };
 
   useEffect(() => {
     if (session) {
@@ -34,13 +50,24 @@ export default function MyPets() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           {pets.map(pet => (
             <div className='p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative' key={pet._id}>
+              <div>
+                <Image className="rounded-md" src={pet.image} alt={"petImage"} width={200} height={200} />
+              </div>
               <h2 className="text-gray-800 text-2xl">{pet.name}</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">              
-                <div>                
-                  <p className="text-gray-800"><span className='font-semibold text-gray-800'>Sobre o pet:</span> {pet.description}</p>
-                </div>
+              <div className="mt-2">              
                 <div>
-                  <p className="text-gray-800 "><span className='font-semibold text-gray-800'>Cidade:</span> {pet.city}</p>
+                  <p className="text-gray-800">
+                    <span className='font-semibold text-gray-800'>Sobre o pet:</span> <br/>
+                    {showFullDescription[pet._id] ? pet.description : formatDescription(pet.description)}
+                    {pet.description.length > 40 && (
+                      <span className="text-blue-500 cursor-pointer" onClick={() => toggleDescription(pet._id)}>
+                        {showFullDescription[pet._id] ? ' [ver menos]' : ' [ver mais]'}
+                      </span>
+                    )}
+                  </p>
+                </div>
+                <div className='flex mt-2 text-sm gap-4'>
+                  <p className="text-gray-800"><span className='font-semibold text-gray-800'>Cidade:</span> {pet.city}</p>
                   <p className="text-gray-800"><span className='font-semibold text-gray-800'>Categoria:</span> {pet.category}</p>
                   <p className="text-gray-800"><span className='font-semibold text-gray-800'>Porte:</span> {pet.size}</p>
                 </div>

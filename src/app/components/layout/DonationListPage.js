@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useSession, signIn } from 'next-auth/react';
+import Delete from '../icons/Delete';
 
 const DonationListPage = ({ donations, onDonationsChange }) => {
   const { data: session } = useSession();
@@ -32,10 +33,10 @@ const DonationListPage = ({ donations, onDonationsChange }) => {
 
   return (
     <div className="max-w-lg mx-auto my-10">
-      <h1 className="text-4xl font-bold mb-4 text-white">Lista de Itens de Doação Necessários</h1>
+      <h1 className="text-4xl font-bold mb-4 text-gray-700">Lista de Itens de Doação Necessários</h1>
       <form onSubmit={handleAddItem} className="space-y-4">
         <div>
-          <label className="block text-white mb-2">Novo Item</label>
+          <label className="block text-gray-700 mb-2">Novo Item</label>
           <input
             type="text"
             value={item}
@@ -55,12 +56,12 @@ const DonationListPage = ({ donations, onDonationsChange }) => {
       <ul className="mt-4 space-y-2">
         {donations && donations.map((item, index) => (
           <li key={index} className="flex justify-between items-center p-2 bg-white rounded shadow">
-            <span>{item}</span>
+            <span className='font-semibold'>{item}</span>
             <button
               onClick={() => handleDeleteItem(index)}
-              className="bg-red-500 text-white p-1 rounded hover:bg-red-700"
+              className="bg-red-400 text-white p-1 rounded hover:bg-red-700 w-20"
             >
-              Excluir
+              <Delete />
             </button>
           </li>
         ))}

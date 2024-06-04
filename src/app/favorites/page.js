@@ -35,8 +35,8 @@ const FavoritesPage = () => {
   }, [session]);
 
   return (
-    <div>
-      <h1 className='text-4xl font-bold mb-4 text-white mt-10'>Favorites Page</h1>
+    <div className='p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative'>
+      <h1 className='text-4xl font-bold mb-4 text-gray-700 mt-10'>Favorites Page</h1>
       <div>
         {/* Verificação se há pets favoritos */}
         {favoritePets.length === 0 ? (

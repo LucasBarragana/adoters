@@ -27,7 +27,7 @@ export async function POST(req) {
       description,
       category,
       size,
-      city: user.city, // Usar a cidade do usuário recuperada do banco de dados
+      city: user.city, 
       creator: session.user.name,
       creatorEmail: session.user.email,
       image

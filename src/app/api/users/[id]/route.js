@@ -34,12 +34,12 @@ export async function PUT(req, { params }) {
   }
 
   const { id } = params;
-  const { name, lastName, address, postalCode, phoneNumber, city, admin, donations, openingHours } = await req.json();
+  const { name, responsable, address, postalCode, phoneNumber, city, admin, donations, openingHours, document } = await req.json();
 
   try {
     const user = await User.findOneAndUpdate(
       { email: id, email: session.user.email },
-      { name, lastName, address, postalCode, phoneNumber, city, admin, donations, openingHours},
+      { name, responsable, address, postalCode, phoneNumber, city, admin, donations, openingHours, document},
       { new: true }
     );
 

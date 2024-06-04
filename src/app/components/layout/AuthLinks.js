@@ -55,23 +55,15 @@ export default function AuthLinks({ status, userName }) {
       <div className="dropdown">
         <button onClick={myFunction} className="dropbtn">Olá, {userName} <More className="ml-2" /></button>
         <div id="myDropdown" className="dropdown-content">
+          {admin && (
+            <div className="flex items-center pl-4 hover:bg-gray-300">     
+              <AddPet className="mr-2" />         
+              <Link href="/request" className="flex items-center"> Adoções</Link>
+            </div>
+          )}
           <div className="flex items-center pl-4 hover:bg-gray-300">
             <Person className="mr-2" />
             <Link href="/profile" className="flex items-center"> Meu Perfil</Link>
-          </div>
-          <div className="flex items-center pl-4 hover:bg-gray-300">
-            <Pets className="mr-2" />
-            <Link href="/my-pets" className="flex items-center"> Meus Pet's</Link>
-          </div>
-          <div className="flex items-center pl-4 hover:bg-gray-300">
-            <Star className="mr-2" />
-            <Link href="/favorites" className="flex items-center"> Favoritos</Link>
-          </div>
-          <div className="flex items-center pl-4 hover:bg-gray-300">
-            <Money className="mr-2" />
-            <Link href={`/user/${session.user.email}`} className="text-blue-500 hover:underline">
-              Página
-            </Link>
           </div>
           {admin && (
             <div className="flex items-center pl-4 hover:bg-gray-300">     
@@ -79,7 +71,29 @@ export default function AuthLinks({ status, userName }) {
               <Link href="/create-pet" className="flex items-center"> Add um Pet</Link>
             </div>
           )}
-          <button className="text-red-500 flex items-center hover:bg-gray-300" onClick={() => signOut({ callbackUrl: '/' })}><Logout className="mr-2" /> Sair</button>
+          {admin && (
+          <div className="flex items-center pl-4 hover:bg-gray-300">
+            <Pets className="mr-2" />
+            <Link href="/my-pets" className="flex items-center"> Meus Pets</Link>
+          </div>
+          )}
+          {admin && (
+          <div className="flex items-center pl-4 hover:bg-gray-300">
+            <Money className="mr-2" />
+            <Link href={`/user/${session.user.email}`} className="text-blue-500 hover:underline">
+              Ver Página
+            </Link>
+          </div>
+          )}
+          <div className="flex items-center pl-4 hover:bg-gray-300">
+            <Star className="mr-2" />
+            <Link href="/favorites" className="flex items-center"> Favoritos</Link>
+          </div>
+          
+          
+          <div>
+            <button className="border-none text-red-500 flex items-center hover:bg-gray-300" onClick={() => signOut({ callbackUrl: '/' })}><Logout className="mr-2" /> Sair</button>
+          </div>
         </div>
       </div>
     );
@@ -93,7 +107,7 @@ export default function AuthLinks({ status, userName }) {
         </button>
         <div id="myDropdown" className="dropdown-content origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            <button type="button" onClick={() => signIn('google', { callbackUrl: '/profile' })}>
+            <button className="border-none" type="button" onClick={() => signIn('google', { callbackUrl: '/profile' })}>
               <Image src={'/google.png'} alt="Google Logo" width={24} height={24} />
               Login/Registro com Google
             </button>

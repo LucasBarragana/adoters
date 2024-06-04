@@ -74,68 +74,71 @@ export default function CreatePet() {
   }
 
   return (
-    <div className="max-w-lg mx-auto my-10">
-      <h1 className="text-4xl font-bold mb-4 text-white">Criar Novo Pet</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <label className="block text-white">Nome</label>
-        <div className="flex items-center">
-        <EditableImage link={image} setLink={setImage} />
-        </div>
-        <div>
-          <label className="block text-white mb-2">Nome</label>
-          <input
-            placeholder="Nome do pet"
-            type="text"
-            value={name}
-            onChange={(e) => setName(capitalize(e.target.value))}
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-white mb-2">Idade</label>
-          <input
-            placeholder="Idade aproximada do pet, caso seja possível"
-            type="number"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </div>
-        <div>
-          <label className="block text-white mb-2">Descrição</label>
-          <textarea
-            type="description"
-            value={description}
-            onChange={(e) => setDescription(capitalize(e.target.value))}
-            placeholder="Adicione algumas caracteristicas do pet(max:100 caracteres)"
-            maxLength={100}
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-white mb-2">Tamanho</label>
-          <select value={size} onChange={(e) => setSize(e.target.value)} required>
-            <option value="">Selecione o Tamanho</option>
-            {sizes.map(s => (
-              <option key={s.value} value={s.value}>{s.label}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className="block text-white mb-2">Tipo</label>
-          <select value={category} onChange={(e) => setCategory(e.target.value)} required>
-            <option value="">Selecione a Categoria</option>
-            {categories.map(cat => (
-              <option key={cat.value} value={cat.value}>{cat.label}</option>
-            ))}
-          </select>
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700"
-        >
-          Criar Pet
-        </button>
-      </form>
+    <div className='p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative'>
+      <div className="max-w-lg mx-auto my-10">
+        <h1 className="text-4xl font-bold mb-4 text-gray-800">Criar Novo Pet</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <label className="block text-gray-800">Imagem</label>
+          <div className="flex items-center">
+          <EditableImage link={image} setLink={setImage} />
+          </div>
+          <div>
+            <label className="block text-gray-800 mb-2">Nome</label>
+            <input
+              placeholder="Nome do pet"
+              type="text"
+              value={name}
+              onChange={(e) => setName(capitalize(e.target.value))}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-gray-800 mb-2">Idade</label>
+            <input
+              placeholder="Idade aproximada do pet, caso seja possível"
+              type="number"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+            />
+          </div>
+          <div>
+            <label className="block text-gray-800 mb-2">Descrição</label>
+            <textarea
+              type="description"
+              value={description}
+              onChange={(e) => setDescription(capitalize(e.target.value))}
+              placeholder="Adicione algumas caracteristicas do pet(max:100 caracteres)"
+              maxLength={100}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-gray-800 mb-2">Tamanho</label>
+            <select value={size} onChange={(e) => setSize(e.target.value)} required>
+              <option value="">Selecione o Tamanho</option>
+              {sizes.map(s => (
+                <option key={s.value} value={s.value}>{s.label}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-gray-800 mb-2">Tipo</label>
+            <select value={category} onChange={(e) => setCategory(e.target.value)} required>
+              <option value="">Selecione a Categoria</option>
+              {categories.map(cat => (
+                <option key={cat.value} value={cat.value}>{cat.label}</option>
+              ))}
+            </select>
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-500 text-gray-800 p-2 rounded hover:bg-blue-700"
+          >
+            Criar Pet
+          </button>
+        </form>
+      </div>
     </div>
+    
   );
 }

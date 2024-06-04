@@ -50,8 +50,13 @@ const UserProfilePage = () => {
     <div className="p-10">
       {userData && (
         <>
+        <div className='p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative'>
           <DonationListPage donations={userData.donations} onDonationsChange={handleDonationsChange} />
+        </div>
+        <div className='p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative'>
           <OpeningHours openingHours={userData.openingHours} onOpeningHoursChange={handleOpeningHoursChange} />
+        </div >  
+          
         </>
       )}
     </div>

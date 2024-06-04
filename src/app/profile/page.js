@@ -60,9 +60,9 @@ export default function UserProfile() {
   }
 
   return (
-    <div className="max-w-lg mx-auto my-10">
-      <div className='flex justify-between items-center'>
-        <h1 className="text-4xl font-bold mb-4 text-white ">Meu Perfil</h1>
+    <div className="my-10 p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg">
+      <div className='flex justify-between items-center text-gray-700 max-w-lg mx-auto my-10'>
+        <h1 className="text-4xl font-bold mb-4 ">Meu Perfil</h1>
         {admin && (
         <div>
           <p className='text-sm mb-1'>Doações/Horários</p>

@@ -10,7 +10,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  lastName: {
+  responsable: {
+    type: String,
+  },
+  document:{
     type: String,
   },
   address: {
@@ -29,7 +32,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   donations: {
-    type: [String],  // Array de strings para itens de doação
+    type: [String],
   },
   help: {
     type: String,

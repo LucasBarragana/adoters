@@ -24,7 +24,7 @@ export async function PUT(req, { params }) {
   }
 
   const { id } = params;
-  const { name, age, description, category, size, city } = await req.json();
+  const { name, age, description, category, size, city, image } = await req.json();
 
   try {
     const pet = await Pet.findOneAndUpdate(
