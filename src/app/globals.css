@@ -65,6 +65,7 @@ div.tabs > *.active {
 /* Dropdown Button */
 .dropbtn {
   background-color: #2C5282;
+  width: 100%;
   color: white;
   padding:10px 16px ;
   font-size: 16px;
@@ -81,17 +82,21 @@ div.tabs > *.active {
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
+  width: 100%;
   display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
+  margin-top: 4px;
+  border-radius: 10px;
   display: none;
   position: absolute;
+  width: 100%;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 100;
 }
 
 /* Links inside the dropdown */
@@ -106,3 +111,17 @@ div.tabs > *.active {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+
+@media only screen and (max-width: 640px) {
+  .dropdown .dropbtn{
+    width: 100%;
+    background-color: #f1f1f1;
+    color: black;
+    padding:10px 16px ;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+   font-weight: 300;
+  }
+}

@@ -1,5 +1,6 @@
 // utils/isAdmin.js
 import { getSession } from 'next-auth/react';
+import toast from "react-hot-toast"
 
 export async function isAdmin() {
   const session = await getSession();
@@ -23,6 +24,7 @@ export async function addToFavorites(userId, petId) {
     method: 'POST',
   });
   const data = await response.json();
+  toast.success('Produto Adicionado');
   console.log(data);
   // Atualizar a interface do usuário conforme necessário
 }
@@ -33,6 +35,7 @@ export async function removeFromFavorites(userId, petId) {
     method: 'DELETE',
   });
   const data = await response.json();
+  toast.success('Produto removido');
   console.log(data);
   // Atualizar a interface do usuário conforme necessário
 }
