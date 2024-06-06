@@ -48,6 +48,10 @@ const FavoritesPage = () => {
     fetchFavoritePets();
   }, [session]);
 
+  const handleFavoriteRemoved = (petId) => {
+    setFavoritePets(favoritePets.filter(pet => pet._id !== petId));
+  };
+
   
   useEffect(() => {
     if (session && session.user && session.user.email) {
@@ -250,7 +254,14 @@ const FavoritesPage = () => {
                   </button>
                 </div>
                 <div className="absolute top-2 right-2">
-                  <FavoriteButton userId={session?.user?.email} petId={pet._id} isFavorite={pet.isFavorite} />
+                  <FavoriteButton
+                    userId={session?.user?.email}
+                    petId={pet._id}
+                    isFavorite={pet.isFavorite}
+                    onFavoritesPage={true}
+                    onFavoriteRemoved={handleFavoriteRemoved}
+                    removeOnly={true} // Passa a nova propriedade para indicar que o botão é apenas para remoção
+                  />
                 </div>
               </div>
           ))
