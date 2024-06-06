@@ -164,7 +164,7 @@ export default function UserPage() {
   if (error) {toast.error('Ocorreu um problema');}
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 px-2">
       <div className="flex flex-col text-white mb-5 mt-10">
         <h1 className="text-4xl font-bold mb-4">Abrigo {user?.name}</h1>
         <div className="hidden flex justify-center items-center text-sm text-gray-700 bg-white bg-opacity-80 backdrop-blur-lg shadow-lg w-full p-4 rounded-lg mt-2">
@@ -203,7 +203,7 @@ export default function UserPage() {
             <p>Nenhum item de doação necessário no momento.</p>
           )}
         </div>
-        <div className="text-gray-700 flex flex-col">
+        <div className="hidden sm:block text-gray-700 flex flex-col">
           <p className="text-xl mb-4 sm:text-2xl">Horários</p>
           {user?.openingHours && user.openingHours.length > 0 ? (
             <ul className="mb-2 text-xs sm:text-base">
@@ -218,21 +218,38 @@ export default function UserPage() {
           )}
         </div>
       </div>
-
-      <div className="mt-8">
+      <div className='block sm:hidden'>
+        <div className="block justify-center items-center text-sm text-gray-700 bg-white bg-opacity-80 backdrop-blur-lg shadow-lg w-full p-4 rounded-lg mt-2">
+          <p className="text-xl mb-4 sm:text-2xl">Horários</p>
+          <div className=''>          
+              {user?.openingHours && user.openingHours.length > 0 ? (
+                  <ul className="grid grid-cols-2 gap-2 mb-2 text-xs sm:text-base">
+                  {user.openingHours.map((item, index) => (
+                    <li key={index} className="mb-2 text-xs sm:text-base">
+                      {`${item.day}: ${item.openingTime} - ${item.closingTime}`}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>Nenhum horário de funcionamento definido no momento.</p>
+              )}
+          </div>
+        </div>
+      </div>   
+      <div className="-mt-20 sm:mt-8">
         <h2 className="text-2xl font-bold mb-4 mt-32 text-gray-700">Pets para adoção neste abrigo:</h2>
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
           {pets.length > 0 ? (
             pets.map((pet) => (
-              <div className="p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative" key={pet._id}>
-                <div>
-                  <Image className="rounded-md" src={pet.image} alt={"petImage"} width={200} height={200} />
+              <div className='p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative' key={pet._id}>
+                <div className="w-full h-40 overflow-hidden rounded-md flex justify-center items-center">
+                  <Image className="object-cover w-full h-full" src={pet.image} alt="petImage" width={160} height={160} />
                 </div>
-                <h2 className="text-gray-800 text-2xl">{pet.name}</h2>
+                <h2 className="text-gray-800 text-2xl mt-2">{pet.name}</h2>
                 <div className="mt-2">
                   <div>
                     <p className="text-gray-800">
-                      <span className="font-semibold text-gray-800">Sobre o pet:</span> <br />
+                      <span className='font-semibold text-gray-800'>Sobre o pet:</span> <br />
                       {showFullDescription[pet._id] ? pet.description : formatDescription(pet.description)}
                       {pet.description.length > 40 && (
                         <span className="text-blue-500 cursor-pointer" onClick={() => toggleDescription(pet._id)}>
@@ -241,10 +258,10 @@ export default function UserPage() {
                       )}
                     </p>
                   </div>
-                  <div className="flex mt-2 text-sm gap-4">
-                    <p className="text-gray-800"><span className="font-semibold text-gray-800">Cidade:</span> {pet.city}</p>
-                    <p className="text-gray-800"><span className="font-semibold text-gray-800">Categoria:</span> {pet.category}</p>
-                    <p className="text-gray-800"><span className="font-semibold text-gray-800">Porte:</span> {pet.size}</p>
+                  <div className='flex justify-between gap-4 mt-2 text-sm'>
+                    <p className="text-gray-800"><span className='font-semibold text-gray-800'>Cidade:</span> <br></br>{pet.city}</p>
+                    <p className="text-gray-800"><span className='font-semibold text-gray-800'>Categoria:</span><br></br> {pet.category}</p>
+                    <p className="text-gray-800"><span className='font-semibold text-gray-800'>Porte:</span><br></br> {pet.size}</p>
                   </div>
                 </div>
                 <p className="text-gray-800 mt-5 bottom-0 left-0">
@@ -284,7 +301,10 @@ export default function UserPage() {
       {showConfirmationModal && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-80">
-            <h1 className="font-semibold text-secondary">UHULL, QUE FELICIDADE!</h1>
+            <div className='flex justify-center align-center gap-2'>
+              <h1 className='font-semibold text-secundary'>UHULL, QUE FELICIDADE!</h1>
+              <Image className="" src="/festa.png" alt="petImage" width={36} height={26} />
+            </div>   
             <p className="text-gray-800 mb-4">
               Oi, me chamo {selectedPetName}, estou ansioso(a) para te conhecer e te encher de amor. Caso tenha certeza que me quer, clique em{' '}
               <span className="font-semibold text-secondary">Sim</span> e vou te esperar por <span className="font-semibold text-secondary">24h</span>.
@@ -303,8 +323,8 @@ export default function UserPage() {
 
       {/* Modal de doações */}
       {popoverOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-          <div ref={popoverRef} className="bg-white p-6 rounded-lg shadow-lg">
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 mt-100">
+          <div ref={popoverRef} className="bg-white p-6 rounded-lg shadow-lg w-80 h-auto  sm:bg-white p-6 rounded-lg shadow-lg">
             <ul className="space-y-2">
               <p className="text-2xl font-semibold">Doações que precisamos:</p>
               {user.donations.map((item, index) => (

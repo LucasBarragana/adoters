@@ -5,9 +5,12 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="hero md:mt-4 relative px-4 sm:px-6 lg:px-8">
+    <section id="hero" className="hero mt-8 md:mt-4 relative px-4 sm:px-6 lg:px-8">
+      <div className="block sm:hidden">
+        <div className="circle"></div>
+      </div>      
       <div className="fixed md:hidden mt-8">
-        <Image src={'/pets4.png'} width={300} height={300} alt={'pets'} className="mx-20 opacity-10"/>
+        <Image src={'/pets4.png'} width={300} height={300} alt={'pets'} className="mx-5 opacity-10"/>
       </div>
       <div className="py-8 z-100 md:py-12 relative z-10 text-center md:text-left z-100">
         <h1 className="text-3xl md:text-4xl font-semibold text-white">

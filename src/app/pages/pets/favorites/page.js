@@ -191,9 +191,9 @@ const FavoritesPage = () => {
 
 
   return (
-    <div className='p-4 mt-8 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative'>
-      <h1 className='text-4xl font-bold mb-4 text-gray-700 mt-10'>Favorites Page</h1>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className='px-4'>
+      <h1 className='text-4xl font-bold mb-4 text-white mt-10'>Favorites Page</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {favoritePets.length === 0 ? (
           <div className='text-center p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative mt-40 mb-40 pt-10 pb-10 flex flex-col justify-center items-center'>
             <Error />
@@ -205,8 +205,8 @@ const FavoritesPage = () => {
         ) : (
           favoritePets.map(pet => (
             <div className="p-2 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative" key={pet._id}>
-                <div>
-                  <Image className="rounded-md" src={pet.image} alt={"petImage"} width={200} height={200} />
+                <div className="w-full h-40 overflow-hidden rounded-md flex justify-center items-center">
+                  <Image className="object-cover w-full h-full" src={pet.image} alt="petImage" width={160} height={160} />
                 </div>
                 <h2 className="text-gray-800 text-2xl">{pet.name}</h2>
                 <div className="mt-2">

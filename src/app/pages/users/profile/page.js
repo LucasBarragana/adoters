@@ -63,12 +63,12 @@ export default function UserProfile() {
 
   return (
     <div className="my-10 p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg">
-      <div className='flex justify-center align-center mt-4 items-center text-gray-700'>
+      <div className='block sm:flex justify-center align-center mt-4 items-center text-gray-700'>
         <h1 className="text-4xl font-bold mb-4">Meu Perfil</h1>
         {admin && (
           <div className="ml-4">
             <p className='text-sm mb-1'>Doações/Horários</p>
-            <Link href="/pages/users/info-shelter" className='bg-secundary text-white rounded-lg font-2xl p-2 cursor-pointer'>Info. Adicionais do Abrigo</Link>
+            <Link href="/pages/users/info-shelter" className='bg-secundary text-white rounded-lg font-2xl p-2 cursor-pointer '>Info. Adicionais do Abrigo</Link>
           </div>
         )}
       </div>

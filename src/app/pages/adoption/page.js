@@ -135,7 +135,7 @@ const AdoptionPage = () => {
   };
 
   return (
-    <div className='px-4 sm:px-6 lg:px-8'>
+    <section id="" className="mt-8 md:mt-4 relative px-4 sm:px-6 lg:px-8">      
       <h1 className='text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mt-10 mb-5'>Página De Adoção</h1>
       {/* Filtros */}
       <div className='flex gap-4'>
@@ -185,7 +185,7 @@ const AdoptionPage = () => {
       </div>
 
       {/* Lista de pets filtrados */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
         {filteredPets.map(pet => (
           <div className='p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative' key={pet._id}>
             <div className="w-full h-40 overflow-hidden rounded-md flex justify-center items-center">
@@ -238,20 +238,25 @@ const AdoptionPage = () => {
       </div>
       {/* Modal de confirmação */}
       {showConfirmationModal && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-80">
+      <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-80 max-w-full mx-4 sm:bg-white p-6 rounded-lg shadow-lg w-80 mx-4">
+          <div className='flex justify-center align-center gap-2'>
             <h1 className='font-semibold text-secundary'>UHULL, QUE FELICIDADE!</h1>
-            <p className="text-gray-800 mb-4">Oi, me chamo {selectedPetName}, estou ansioso(a) para te conhecer e te encher de amor. 
-              Caso tenha certeza que me quer, click em <span className='font-semibold text-secundary'>Sim</span>  e vou te esperar por 
-              <span className='font-semibold text-secundary'>24h</span>.</p>
-            <div className="flex justify-end">
-              <button onClick={handleConfirmAdoption} className="bg-green-500 text-white p-2 rounded mr-2">Sim</button>
-              <button onClick={handleCancelAdoption} className="bg-gray-500 text-white p-2 rounded">Voltar</button>
-            </div>
+            <Image className="" src="/festa.png" alt="petImage" width={36} height={26} />
+          </div>          
+          <p className="text-gray-800 mb-4">
+            Oi, me chamo {selectedPetName}, estou ansioso(a) para te conhecer e te encher de amor. 
+            Caso tenha certeza que me quer, clique em <span className='font-semibold text-secundary'>Sim</span> e vou te esperar por 
+            <span className='font-semibold text-secundary'>24h</span>.
+          </p>
+          <div className="flex justify-end">
+            <button onClick={handleConfirmAdoption} className="bg-green-500 text-white p-2 rounded mr-2">Sim</button>
+            <button onClick={handleCancelAdoption} className="bg-gray-500 text-white p-2 rounded">Voltar</button>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    )}
+    </section>
   );
 };
 

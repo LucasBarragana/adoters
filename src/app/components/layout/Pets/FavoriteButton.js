@@ -25,7 +25,7 @@ const FavoriteButton = ({ userId, petId, isFavorite }) => {
 
   return (
     <div>
-      <button className='p-2 border-none' onClick={handleFavoriteClick}>
+      <button className='p-2 border-none bg-white rounded-full' onClick={handleFavoriteClick}>
         {favorite ? <HeartAdd /> : <Heart /> }
       </button>
     </div>

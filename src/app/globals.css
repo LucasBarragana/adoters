@@ -6,7 +6,14 @@ body {
   @apply bg-custom-bg;
 }
 
-section.hero {
+section.hero
+{
+  @apply block md:grid;
+  grid-template-columns: .4fr .6fr;
+}
+
+seciton.adoption 
+{
   @apply block md:grid;
   grid-template-columns: .4fr .6fr;
 }
@@ -92,6 +99,7 @@ div.tabs > *.active {
   border-radius: 10px;
   display: none;
   position: absolute;
+  right: 0;
   width: 100%;
   background-color: #f1f1f1;
   min-width: 160px;
@@ -108,20 +116,23 @@ div.tabs > *.active {
   font-weight: 300
 }
 
+.circle {
+  position: absolute;
+  right: 50px;
+  left: -220px;
+  bottom: -170px;
+  width: 800px;
+  height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2C5282, #2C5282);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+}
+
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
 
-@media only screen and (max-width: 640px) {
-  .dropdown .dropbtn{
-    width: 100%;
-    background-color: #f1f1f1;
-    color: black;
-    padding:10px 16px ;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-   font-weight: 300;
-  }
-}

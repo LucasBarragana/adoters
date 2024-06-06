@@ -14,6 +14,7 @@ import More from "../../icons/More";
 import Star from "../../icons/star";
 import Home from "../../icons/Home";
 import Adoptionpets from "../../icons/Adoption";
+import Menu from "../../icons/Menu";
 
 export default function AuthLinks({ status, userName }) {
   const [admin, setAdmin] = useState(false);
@@ -54,7 +55,12 @@ export default function AuthLinks({ status, userName }) {
   if (status === 'authenticated') {
     return (
       <div className="dropdown">
-        <button onClick={myFunction} className="dropbtn">Olá, {userName} <More className="ml-2" /></button>        
+        <div className="hidden sm:block">
+          <button onClick={myFunction} className="dropbtn">Olá, {userName} <More className="ml-2" /></button>
+        </div>
+        <div className="block sm:hidden">
+          <button onClick={myFunction} className="dropbtn"><Menu /></button>
+        </div>        
         <div id="myDropdown" className="dropdown-content">
           <div className="sm:hidden flex items-center pl-4 hover:bg-gray-300">
             <Home className="mr-2" />
@@ -111,17 +117,10 @@ export default function AuthLinks({ status, userName }) {
   if (status === 'unauthenticated') {
     return (
       <div className="relative inline-block text-left">
-        <button onClick={myFunction} className="dropbtn inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 hover:transition-transform duration-300">
-          Login/Registrar-se
-        </button>
-        <div id="myDropdown" className="dropdown-content origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1">
-            <button className="border-none" type="button" onClick={() => signIn('google', { callbackUrl: '/profile' })}>
+        <button className="border-none bg-white text-secundary sm:bg-secundary sm:text-white" type="button" onClick={() => signIn('google', { callbackUrl: '/pages/users/profile' })}>
               <Image src={'/google.png'} alt="Google Logo" width={24} height={24} />
-              Login/Registro com Google
+              Entrar
             </button>
-          </div>
-        </div>
       </div>
     );
   }

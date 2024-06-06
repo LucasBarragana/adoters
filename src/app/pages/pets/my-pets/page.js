@@ -45,19 +45,19 @@ export default function MyPets() {
   }
 
   return (
-    <div className="">
+    <div className="px-4 sm:px-6 lg:px-8">
       <h1 className="text-4xl font-bold mb-4 text-white mt-10">Meus Pets</h1>      
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
           {pets.map(pet => (
-            <div className='p-4 m-2 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative' key={pet._id}>
-              <div>
-                <Image className="rounded-md" src={pet.image} alt={"petImage"} width={200} height={200} />
+            <div className='p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative' key={pet._id}>
+              <div className="w-full h-40 overflow-hidden rounded-md flex justify-center items-center">
+                <Image className="object-cover w-full h-full" src={pet.image} alt="petImage" width={160} height={160} />
               </div>
-              <h2 className="text-gray-800 text-2xl">{pet.name}</h2>
-              <div className="mt-2">              
+              <h2 className="text-gray-800 text-2xl mt-2">{pet.name}</h2>
+              <div className="mt-2">
                 <div>
                   <p className="text-gray-800">
-                    <span className='font-semibold text-gray-800'>Sobre o pet:</span> <br/>
+                    <span className='font-semibold text-gray-800'>Sobre o pet:</span> <br />
                     {showFullDescription[pet._id] ? pet.description : formatDescription(pet.description)}
                     {pet.description.length > 40 && (
                       <span className="text-blue-500 cursor-pointer" onClick={() => toggleDescription(pet._id)}>
@@ -66,10 +66,10 @@ export default function MyPets() {
                     )}
                   </p>
                 </div>
-                <div className='flex mt-2 text-sm gap-4'>
-                  <p className="text-gray-800"><span className='font-semibold text-gray-800'>Cidade:</span> {pet.city}</p>
-                  <p className="text-gray-800"><span className='font-semibold text-gray-800'>Categoria:</span> {pet.category}</p>
-                  <p className="text-gray-800"><span className='font-semibold text-gray-800'>Porte:</span> {pet.size}</p>
+                <div className='flex justify-between gap-4 mt-2 text-sm'>
+                  <p className="text-gray-800"><span className='font-semibold text-gray-800'>Cidade:</span> <br></br>{pet.city}</p>
+                  <p className="text-gray-800"><span className='font-semibold text-gray-800'>Categoria:</span><br></br> {pet.category}</p>
+                  <p className="text-gray-800"><span className='font-semibold text-gray-800'>Porte:</span><br></br> {pet.size}</p>
                 </div>
               </div>
               <p className="text-gray-800 mt-5  bottom-0 left-0">

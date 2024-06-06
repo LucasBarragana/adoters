@@ -6,13 +6,13 @@ import Image from 'next/image';
 const About = () => {
   return (
     <section className="text-center mt-[80px] px-4 sm:px-6 md:px-8" id="about">
-      <h1 className='text-4xl font-semibold underline text-white sm:text-gray-700 mb-10'>Nosso <span className='text-4xl font-semibold text-white sm:text-gray-700'>Propósito</span></h1>
-      <div className="relative w-full flex justify-center mt-4">
-        <div className="absolute left-0 -top-10 transform -translate-y-20 -translate-x-10 md:-translate-x-20">
-          <Image src={'/sadcat.png'} width={107} height={195} alt={'cat'} />
+      <h1 className='text-4xl font-semibold underline text-white mb-10 sm:text-4xl font-semibold underline sm:text-gray-700 mb-10'>Nosso Propósito</h1>
+      <div className="relative w-full flex justify-center mt-4 top-44 opacity-10 sm:opacity-100 -z-1">
+        <div className="absolute left-0  transform -translate-y-100 -translate-x-10 md:-translate-y-20">
+          <Image src={'/pet1.png'} width={107} height={195} className='w-20' alt={'cat'} />
         </div>
-        <div className="absolute right-0 -top-12 transform -translate-y-20 translate-x-10 md:translate-x-20">
-          <Image src={'/saddog.png'} width={107} height={195} alt={'dog'} />
+        <div className="absolute right-0  transform -translate-y-100 translate-x-10 md:-translate-y-20">
+          <Image src={'/pet2.png'} width={107} height={195} className='w-24' alt={'dog'} />
         </div>
       </div>
       <div className="text-gray-900 max-w-4xl mx-auto mt-4 flex flex-col gap-4 z-100">

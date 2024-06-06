@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import Header from "./components/layout/Navbar/Header";
 import Footer from "./components/layout/Home/Footer";
 import Forma from "./components/icons/Forma";
+import Forma2 from '@/app/components/icons/Form2';
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] })
 
@@ -15,17 +16,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={roboto.className}>
-          <main className="max-w-7xl mx-auto p-4">
-            <AppProvider>
-              <Toaster />
-              <Forma />
-              <Header />
-              {children}
-              <Footer />
-            </AppProvider>
-          </main>
+    <html lang="en" className="scroll-smooth overflow-x-hidden">
+      <body className={`${roboto.className} overflow-x-hidden`}>
+        <main className="max-w-7xl mx-auto p-4 overflow-x-hidden">
+          <AppProvider>
+            <Toaster />
+            <div className="hidden sm:block"><Forma /></div>    
+            <div className="block sm:hidden"><Forma2 /></div>                      
+            <Header />
+            {children}
+            <Footer />
+          </AppProvider>
+        </main>
       </body>
     </html>
   )

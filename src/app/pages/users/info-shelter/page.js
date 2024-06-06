@@ -64,12 +64,12 @@ const UserProfilePage = () => {
       {userData && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <div className='p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative'>
+            <div className='p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative'>
               <DonationListPage donations={userData.donations} onDonationsChange={handleDonationsChange} />
             </div>
           </div>
           <div>
-            <div className='p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative'>
+            <div className='p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative'>
               <OpeningHours openingHours={userData.openingHours} onOpeningHoursChange={handleOpeningHoursChange} />
             </div>
           </div>
