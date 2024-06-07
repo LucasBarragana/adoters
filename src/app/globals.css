@@ -6,6 +6,17 @@ body {
   @apply bg-custom-bg;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
 section.hero
 {
   @apply block md:grid;

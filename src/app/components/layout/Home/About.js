@@ -6,8 +6,10 @@ import Image from 'next/image';
 const About = () => {
   return (
     <section className="text-center mt-[80px] px-4 sm:px-6 md:px-8" id="about">
-      <h1 className='text-4xl font-semibold underline text-white mb-10 sm:text-4xl font-semibold underline sm:text-gray-700 mb-10'>Nosso Propósito</h1>
-      <div className="relative w-full flex justify-center mt-4 top-44 opacity-10 sm:opacity-100 -z-1">
+      <h1 className='text-gray-700 text-4xl font-semibold sm:text-white text-4xl font-semibold md:text-gray-700 text-4xl font-semibold lg:text-gray-700e text-4xl font-semibold'>
+        Nosso Propósito
+      </h1>
+      <div className="relative w-full flex justify-center mt-4 top-44 opacity-10 sm:opacity-10 -z-1 md:opacity-10 -z-1 lg:opacity-100">
         <div className="absolute left-0  transform -translate-y-100 -translate-x-10 md:-translate-y-20">
           <Image src={'/pet1.png'} width={107} height={195} className='w-20' alt={'cat'} />
         </div>

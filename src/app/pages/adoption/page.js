@@ -138,50 +138,54 @@ const AdoptionPage = () => {
     <section id="" className="mt-8 md:mt-4 relative px-4 sm:px-6 lg:px-8">      
       <h1 className='text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mt-10 mb-5'>Página De Adoção</h1>
       {/* Filtros */}
-      <div className='flex gap-4'>
-        <div>
-          <label className='text-white' htmlFor="city">Cidade</label>
-          <select
-            className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
-            value={filter.city}
-            onChange={e => setFilter({ ...filter, city: e.target.value })}
-          >
-            <option value="">Cidades</option>
-            {cities.map(city => (
-              <option key={city.value} value={city.value}>{city.label}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className='text-white' htmlFor="category">Categoria</label>
-          <select
-            className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
-            value={filter.category}
-            onChange={e => setFilter({ ...filter, category: e.target.value })}
-          >
-            <option value="">Categorias</option>
-            {categories.map(category => (
-              <option key={category.value} value={category.value}>{category.label}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className='text-white' htmlFor="size">Porte</label>
-          <select
-            className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
-            value={filter.size}
-            onChange={e => setFilter({ ...filter, size: e.target.value })}
-          >
-            <option value="">Portes</option>
-            {sizes.map(size => (
-              <option key={size.value} value={size.value}>{size.label}</option>
-            ))}
-          </select>
-        </div>
-        <div className='flex mt-4 items-center gap-4'>
-          <button className='bg-white p-2 rounded-md' onClick={applyFilter}><Lupa /></button>
-          <button className='bg-white p-2 rounded-md' onClick={clearFilter}><Refresh /></button>
-        </div>
+      <div className='block gap-4 sm:flex gap-4 md:flex gap-4 lg:flex gap-4'>
+        <div className='flex gap-4'>
+          <div>
+            <label className='text-white' htmlFor="city">Cidade</label>
+            <select
+              className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
+              value={filter.city}
+              onChange={e => setFilter({ ...filter, city: e.target.value })}
+            >
+              <option value="">Cidades</option>
+              {cities.map(city => (
+                <option key={city.value} value={city.value}>{city.label}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className='text-white' htmlFor="category">Categoria</label>
+            <select
+              className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
+              value={filter.category}
+              onChange={e => setFilter({ ...filter, category: e.target.value })}
+            >
+              <option value="">Categorias</option>
+              {categories.map(category => (
+                <option key={category.value} value={category.value}>{category.label}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className='text-white' htmlFor="size">Porte</label>
+            <select
+              className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
+              value={filter.size}
+              onChange={e => setFilter({ ...filter, size: e.target.value })}
+            >
+              <option value="">Portes</option>
+              {sizes.map(size => (
+                <option key={size.value} value={size.value}>{size.label}</option>
+              ))}
+            </select>
+          </div>          
+        </div>  
+        <div className='flex justify-end align-end'>
+          <div className='flex items-center gap-4'>
+            <button className='bg-white p-2 rounded-md sm:bg-white p-2 rounded-md md:bg-white p-2 rounded-md lg:bg-white p-2 rounded-md' onClick={applyFilter}><Lupa /></button>
+            <button className='bg-white p-2 rounded-md sm:bg-white p-2 rounded-md md:bg-white p-2 rounded-md lg:bg-white p-2 rounded-md' onClick={clearFilter}><Refresh /></button>
+          </div>
+        </div>      
       </div>
 
       {/* Lista de pets filtrados */}

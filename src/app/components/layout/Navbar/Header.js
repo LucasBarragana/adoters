@@ -25,11 +25,11 @@ export default function Header() {
             <span className="flex items-center text-red-500 ml-4">AMOR</span><span className="text-white flex items-center">PET</span>
           </Link>                  
         </nav>
-        <nav className="flex items-center gap-4 text-blue-900 font-semibold">  
-          <div className="hidden md:flex mr-10 ">
-            <Link href={"/"} className="mr-8 hover:text-blue-800 ">Home</Link>
-            <Link href={"/pages/adoption"} className="mr-8 hover:text-blue-800 ">Adoção</Link>
-            <Link href={"/#about"} className="mr-8 hover:text-blue-800 ">Sobre</Link>  
+        <nav className="md:flex items-center gap-4 font-semibold">  
+          <div className="hidden md:flex mr-10">
+            <Link href={"/"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Home</Link>
+            <Link href={"/pages/adoption"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Adoção</Link>
+            <Link href={"/#about"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Sobre</Link>  
           </div>        
           <AuthLinks status={status} userName={userName} />  
         </nav>
