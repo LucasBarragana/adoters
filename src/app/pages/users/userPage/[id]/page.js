@@ -1,18 +1,13 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
-import { useSession} from 'next-auth/react';
-import Image from 'next/image';
-import FavoriteButton from '@/app/components/layout/Pets/FavoriteButton';
-import toast from "react-hot-toast";
+import { useParams } from 'next/navigation';
+import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import FavoriteButton from '@/app/components/layout/Pets/FavoriteButton';
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 
-export default function UserPage() {
-  const { data: session } = useSession();
-  const [user, setUser] = useState(null);
-  const [pets, setPets] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export default function UserPageId() {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [selectedPetId, setSelectedPetId] = useState(null);
   const [selectedPetName, setSelectedPetName] = useState('');
@@ -22,12 +17,18 @@ export default function UserPage() {
   const [showAllDonations, setShowAllDonations] = useState(false);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const popoverRef = useRef(null);
+  const { id } = useParams();
+  const [user, setUser] = useState(null);
+  const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { data: session } = useSession();
 
   useEffect(() => {
-    if (session && session.user && session.user.email) {
+    if (id) {
       const fetchUser = async () => {
         try {
-          const response = await fetch(`/api/users/${session.user.email}`);
+          const response = await fetch(`/api/users/${id}`);
           const data = await response.json();
           setUser(data);
         } catch (err) {
@@ -37,7 +38,7 @@ export default function UserPage() {
 
       const fetchPets = async () => {
         try {
-          const response = await fetch(`/api/users/${session.user.email}/pets`);
+          const response = await fetch(`/api/users/${id}/pets`);
           const data = await response.json();
           setPets(data);
         } catch (err) {
@@ -49,14 +50,9 @@ export default function UserPage() {
       fetchPets();
       setLoading(false);
     }
-  }, [session]);
+  }, [id]);
 
-  useEffect(() => {
-    const storedAdoptionStatus = localStorage.getItem('adoptionStatus');
-    if (storedAdoptionStatus) {
-      setAdoptionStatus(JSON.parse(storedAdoptionStatus));
-    }
-  }, []);
+  
 
   const formatDescription = (description, maxLength = 40) => {
     if (description.length <= maxLength) {
@@ -160,8 +156,18 @@ export default function UserPage() {
     };
   }, [popoverOpen]);
 
+  
+  useEffect(() => {
+    const storedAdoptionStatus = localStorage.getItem('adoptionStatus');
+    if (storedAdoptionStatus) {
+      setAdoptionStatus(JSON.parse(storedAdoptionStatus));
+    }
+  }, []);
 
   if (error) {toast.error('Ocorreu um problema');}
+
+  if (loading) return <div>Carregando...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="mt-10 px-2">

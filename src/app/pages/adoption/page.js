@@ -215,7 +215,7 @@ const AdoptionPage = () => {
               </div>
             </div>
             <p className="text-gray-800 mt-5">
-              Abrigo: <Link href={`/pages/users/user/${pet.creatorEmail}`} className="text-black font-semibold underline">{pet.creator}</Link>
+              Abrigo: <Link href={`/pages/users/userPage/${pet.creatorEmail}`} className="text-black font-semibold underline">{pet.creator}</Link>
             </p>
             <div className='w-full bg-secundary text-white cursor-pointer flex justify-center align-center rounded-lg mt-4'>
               <button

@@ -28,6 +28,7 @@ export default function Header() {
         <nav className="md:flex items-center gap-4 font-semibold">  
           <div className="hidden md:flex mr-10">
             <Link href={"/"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Home</Link>
+            <Link href={"/pages/shelters"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Abrigos</Link>
             <Link href={"/pages/adoption"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Adoção</Link>
             <Link href={"/#about"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Sobre</Link>  
           </div>        
