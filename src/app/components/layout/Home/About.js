@@ -19,7 +19,7 @@ const About = () => {
       </div>
       <div className=" max-w-4xl mx-auto mt-4 flex flex-col gap-4 z-100">
         <div className='text-gray-900'>
-          <p>
+          <p className=''>
             Bem-vindo ao nosso portal de adoção e apoio a animais resgatados no Rio Grande do Sul!
           </p>
           <p>
@@ -43,7 +43,7 @@ const About = () => {
         <p className='text-gray-800'>
           Nosso compromisso é promover a adoção responsável e garantir que cada animal encontre um lar cheio de amor e cuidado. Junte-se a nós nesta causa nobre e ajude a transformar vidas, uma adoção por vez.
         </p>
-        <p className='text-gray-800'>
+        <p>
           Vamos juntos fazer a diferença para os animais necessitados no Rio Grande do Sul!
         </p>
       </div>

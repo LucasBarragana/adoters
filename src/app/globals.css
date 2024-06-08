@@ -149,14 +149,13 @@ div.tabs > *.active {
   max-height: 100%; /* Ensure image stays within container height */
 }
 
-
-@media (min-width: 440px) {
+@media (min-width: 445px) {
   .text-gray-700 {
     color: #fff; /* Cor branca para telas menores que 440px */
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 590px) {
   .text-gray-900 {
     color: #fff; /* Cor branca para telas menores que 440px */
   }
@@ -165,5 +164,11 @@ div.tabs > *.active {
 @media (min-width: 760px) {
   .text-gray-800 {
     color: #fff; /* Cor branca para telas menores que 440px */
+  }
+}
+
+@media (min-width: 765px) {
+  .text-gray-700, .text-gray-800, .text-gray-900 {
+    color: #374151; /* Cor cinza inicial */
   }
 }

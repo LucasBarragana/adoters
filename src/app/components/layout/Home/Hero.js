@@ -38,7 +38,7 @@ export default function Hero() {
         </div>
       </div>
       <div className="absolute right-0 top-1/2 transform -translate-y-1/2 md:block hidden -z-10">
-        <Image src={'/pets4.png'} width={400} height={400} alt={'pets'} className="hidden md:block"/>
+        <Image src={'/pets4.png'} width={400} height={400} alt={'pets'} className="hidden md:block drop-shadow-xl"/>
       </div>      
     </section>
   );
