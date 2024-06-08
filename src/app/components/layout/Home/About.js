@@ -17,15 +17,17 @@ const About = () => {
           <Image src={'/pet2.png'} width={107} height={195} className='w-24' alt={'dog'} />
         </div>
       </div>
-      <div className="text-gray-900 max-w-4xl mx-auto mt-4 flex flex-col gap-4 z-100">
-        <p>
-          Bem-vindo ao nosso portal de adoção e apoio a animais resgatados no Rio Grande do Sul!
-        </p>
-        <p>
-          Este site foi criado com o objetivo de conectar animais desabrigados e perdidos, vítimas das recentes inundações em nossa região, com pessoas generosas e amorosas que desejam oferecer um novo lar e uma segunda chance a esses seres indefesos. Através deste espaço, os abrigos beneficentes, sem fins lucrativos, podem cadastrar os animais que resgataram, tornando-os visíveis para possíveis adotantes.
-        </p>
-        <div>
-          <p className='mb-2'>Aqui, você encontrará diversas opções para ajudar:</p>
+      <div className=" max-w-4xl mx-auto mt-4 flex flex-col gap-4 z-100">
+        <div className='text-gray-900'>
+          <p>
+            Bem-vindo ao nosso portal de adoção e apoio a animais resgatados no Rio Grande do Sul!
+          </p>
+          <p>
+            Este site foi criado com o objetivo de conectar animais desabrigados e perdidos, vítimas das recentes inundações em nossa região, com pessoas generosas e amorosas que desejam oferecer um novo lar e uma segunda chance a esses seres indefesos. Através deste espaço, os abrigos beneficentes, sem fins lucrativos, podem cadastrar os animais que resgataram, tornando-os visíveis para possíveis adotantes.
+          </p>
+        </div>        
+        <div className=''>
+          <p className='text-gray-900 mb-2'>Aqui, você encontrará diversas opções para ajudar:</p>
           <ul className='text-left flex flex-col sm:flex-row gap-2 sm:gap-4'>
             <li className='bg-blue-200 p-2 rounded-lg'>
               <span className='font-bold'>Adoção de Animais:</span> Navegue pelas páginas de adoção, conheça os animais disponíveis e encontre seu novo melhor amigo.
@@ -38,10 +40,10 @@ const About = () => {
             </li>
           </ul>
         </div>
-        <p>
+        <p className='text-gray-800'>
           Nosso compromisso é promover a adoção responsável e garantir que cada animal encontre um lar cheio de amor e cuidado. Junte-se a nós nesta causa nobre e ajude a transformar vidas, uma adoção por vez.
         </p>
-        <p>
+        <p className='text-gray-800'>
           Vamos juntos fazer a diferença para os animais necessitados no Rio Grande do Sul!
         </p>
       </div>

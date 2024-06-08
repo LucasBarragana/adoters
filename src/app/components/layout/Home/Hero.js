@@ -6,8 +6,14 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section id="hero" className="hero mt-8 md:mt-4 relative px-4 sm:px-6 lg:px-8">          
-      <div className="fixed inset-0 flex items-center justify-center mt-8 sm:fixed inset-0 flex items-center justify-center mt-8 md:hidden lg:hidden">
-        <Image src={'/pets4.png'} width={300} height={300} alt={'pets'} className="opacity-10 sm:opacity-10 md:opacity-0 lg:opacity-0 "/>
+      <div className="fixed inset-0 flex items-center justify-center mt-40 ml-12 custom-container">
+        <Image 
+          src={'/pets4.png'} 
+          width={300} 
+          height={300} 
+          alt={'pets'} 
+          className="opacity-10 sm:opacity-0 md:opacity-0 lg:opacity-0"
+        />
       </div>
       <div className="py-8 z-100 md:py-12 relative z-10 text-center md:text-left z-100">
         <h1 className="text-3xl md:text-4xl font-semibold text-white">

@@ -6,6 +6,7 @@ import Header from "./components/layout/Navbar/Header";
 import Footer from "./components/layout/Home/Footer";
 import Forma from "./components/icons/Forma";
 import Forma2 from "./components/icons/Form2";
+import Navbar from "./components/layout/Navbar/Navbar";
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
@@ -21,9 +22,9 @@ export default function RootLayout({ children }) {
         <main className="max-w-7xl mx-auto p-4 overflow-x-hidden">
           <AppProvider>
             <Toaster />
+            <Navbar />
             <div className="hidden sm:hidden md:block lg:block"><Forma /></div>    
-            <div className="block sm:block md:hidden lg:hidden"><Forma2 /></div>                      
-            <Header />
+            <div className="block sm:block md:hidden lg:hidden"><Forma2 /></div>   
             {children}
             <Footer />
           </AppProvider>
