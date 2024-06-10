@@ -105,6 +105,7 @@ div.tabs > *.active {
   width: 100%; /* Adjusted for better mobile compatibility */
   background-color: #f1f1f1;
   min-width: 160px;
+  max-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 100;
 }
