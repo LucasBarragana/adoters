@@ -20,33 +20,9 @@ const FavoritesPage = () => {
   const [selectedPetName, setSelectedPetName] = useState('');
   const [selectedPetCreatorEmail, setSelectedPetCreatorEmail] = useState('');
   const [adoptionStatus, setAdoptionStatus] = useState({});
-  const [showAllDonations, setShowAllDonations] = useState(false);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const popoverRef = useRef(null);
 
-  useEffect(() => {
-    const fetchFavoritePets = async () => {
-      try {
-        if (session && session.user) {
-          const response = await fetch(`/api/users/${session.user.email}`);
-          const userData = await response.json();
-          const favoritePetIds = userData.favorites;
-
-          const favoritePetsData = await Promise.all(
-            favoritePetIds.map(async petId => {
-              const petResponse = await fetch(`/api/pets/${petId}`);
-              return await petResponse.json();
-            })
-          );
-          setFavoritePets(favoritePetsData);
-        }
-      } catch (error) {
-        console.error('Failed to load favorite pets:', error);
-      }
-    };
-
-    fetchFavoritePets();
-  }, [session]);
 
   const handleFavoriteRemoved = (petId) => {
     setFavoritePets(favoritePets.filter(pet => pet._id !== petId));
@@ -202,7 +178,7 @@ const FavoritesPage = () => {
           <div className='text-center p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative mt-40 mb-40 pt-10 pb-10 flex flex-col justify-center items-center'>
             <Error />
             <p className='text-2xl mt-4'>Você não tem nenhum pet favorito ainda.</p>
-            <Link href="/pages/adoption" className='text-gray-800 underline font-semibold mt-2'>
+            <Link href="/pages/adoption" className='text-gray-850 underline font-semibold mt-2'>
               Veja os pets disponíveis para adoção aqui
             </Link>
           </div>        
@@ -212,11 +188,11 @@ const FavoritesPage = () => {
                 <div className="w-full h-40 overflow-hidden rounded-md flex justify-center items-center">
                   <Image className="object-cover w-full h-full" src={pet.image} alt="petImage" width={160} height={160} />
                 </div>
-                <h2 className="text-gray-800 text-2xl">{pet.name}</h2>
+                <h2 className="text-gray-850 text-2xl">{pet.name}</h2>
                 <div className="mt-2">
                   <div>
-                    <p className="text-gray-800">
-                      <span className="font-semibold text-gray-800">Sobre o pet:</span> <br />
+                    <p className="text-gray-850">
+                      <span className="font-semibold text-gray-850">Sobre o pet:</span> <br />
                       {showFullDescription[pet._id] ? pet.description : formatDescription(pet.description)}
                       {pet.description.length > 40 && (
                         <span className="text-blue-500 cursor-pointer" onClick={() => toggleDescription(pet._id)}>
@@ -226,12 +202,12 @@ const FavoritesPage = () => {
                     </p>
                   </div>
                   <div className="flex mt-2 text-sm gap-4">
-                    <p className="text-gray-800"><span className="font-semibold text-gray-800">Cidade:</span> {pet.city}</p>
-                    <p className="text-gray-800"><span className="font-semibold text-gray-800">Categoria:</span> {pet.category}</p>
-                    <p className="text-gray-800"><span className="font-semibold text-gray-800">Porte:</span> {pet.size}</p>
+                    <p className="text-gray-850"><span className="font-semibold text-gray-850">Cidade:</span> {pet.city}</p>
+                    <p className="text-gray-850"><span className="font-semibold text-gray-850">Categoria:</span> {pet.category}</p>
+                    <p className="text-gray-850"><span className="font-semibold text-gray-850">Porte:</span> {pet.size}</p>
                   </div>
                 </div>
-                <p className="text-gray-800 mt-5 bottom-0 left-0">
+                <p className="text-gray-850 mt-5 bottom-0 left-0">
                   Abrigo: <Link href={`/pages/users/user/${pet.creatorEmail}`} className="text-black font-semibold underline">{pet.creator}</Link>
                 </p>
                 <div className="w-full bg-secundary text-white cursor-pointer flex justify-center align-center rounded-lg mt-4">
@@ -273,7 +249,7 @@ const FavoritesPage = () => {
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-80">
             <h1 className="font-semibold text-secondary">UHULL, QUE FELICIDADE!</h1>
-            <p className="text-gray-800 mb-4">
+            <p className="text-gray-850 mb-4">
               Oi, me chamo {selectedPetName}, estou ansioso(a) para te conhecer e te encher de amor. Caso tenha certeza que me quer, clique em{' '}
               <span className="font-semibold text-secondary">Sim</span> e vou te esperar por <span className="font-semibold text-secondary">24h</span>.
             </p>

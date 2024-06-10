@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { signIn, signOut } from "next-auth/react";
 import { isAdmin } from "@/app/utils/isAdmin";
 import Link from "next/link";
@@ -23,6 +23,7 @@ const AuthLinks = ({ status, userName }) => {
   const [admin, setAdmin] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { data: session } = useSession();
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     async function checkAdmin() {
@@ -32,17 +33,45 @@ const AuthLinks = ({ status, userName }) => {
     checkAdmin();
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    const handleScroll = () => {
+      setDropdownOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
   if (status === 'authenticated') {
     return (
-      <div className='dropdown'>
-          <button onClick={toggleDropdown} className="bg-secundary"><Menu /></button> 
+      <div className='dropdown' ref={dropdownRef}>
+        <div className="flex justify-center align-center items-center gap-2">
+          <p className="hidden sm:hidden md:hidden lg:block items-center pl-4 text-xl ml-4">Olá, 
+            <span className="ml-1 text-secundary  font-semibold">{userName}</span> 
+          </p>
+          <button onClick={toggleDropdown} className="bg-secundary"><Menu /></button>
+        </div>           
           {dropdownOpen && (
             <div className="dropdown-content">
-              <p className="flex items-center pl-4 text-xl ml-4 mt-4">Olá, <span className="ml-1 text-secundary  font-semibold">{userName}</span> </p>
+              <div className="flex justify-center align-center mt-2 mb-2">
+                <p className="font-semibold text-xl text-secundary">Minha Conta</p>
+              </div>
+              <div className="bg-gray-300 w-full py-[1px] "></div>
               <div className="sm:hidden flex items-center pl-4 hover:bg-gray-300">
                 <Home className="mr-2" />
                 <Link href="/" className="flex items-center"> Home</Link>

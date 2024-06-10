@@ -172,3 +172,29 @@ div.tabs > *.active {
     color: #374151; /* Cor cinza inicial */
   }
 }
+
+
+@media (max-width: 1125px) {
+  #inicio {
+    color: #fff; /* Cor branca para telas menores que 440px */
+  }
+}
+
+@media (max-width: 1045px) {
+  #abrigo {
+    color: white; /* Cor branca para telas menores que 440px */
+  }
+}
+
+@media (max-width: 955px) {
+  #adocao {
+    color: #fff; /* Cor branca para telas menores que 440px */
+  }
+}
+
+@media (max-width: 878px) {
+  #sobre {
+    color: #fff; /* Cor branca para telas menores que 440px */
+  }
+}
+

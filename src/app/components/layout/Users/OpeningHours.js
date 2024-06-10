@@ -36,7 +36,7 @@ const OpeningHours = ({ openingHours, onOpeningHoursChange }) => {
 
   return (
     <div className="max-w-lg mx-auto my-10">
-      <h1 className="text-4xl font-bold mb-4 text-gray-700">Horários de Funcionamento</h1>
+      <h1 className="text-4xl font-bold mb-4 text-gray-750">Horários de Funcionamento</h1>
       <form onSubmit={handleAddOpeningHour} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -72,7 +72,7 @@ const OpeningHours = ({ openingHours, onOpeningHoursChange }) => {
           
           <button
             type="submit"
-            className="col-span-2 bg-blue-500 text-gray-700 p-2 rounded hover:bg-blue-700"
+            className="col-span-2 bg-blue-500 text-gray-750 p-2 rounded hover:bg-blue-750"
           >
             Adicionar Horário
           </button>
@@ -84,7 +84,7 @@ const OpeningHours = ({ openingHours, onOpeningHoursChange }) => {
             <span>{`${item.day}: ${item.openingTime} - ${item.closingTime}`}</span>
             <button
               onClick={() => handleDeleteOpeningHour(index)}
-              className="bg-red-400 text-white p-1 w-16 h-8 rounded hover:bg-red-700"
+              className="bg-red-400 text-white p-1 w-16 h-8 rounded hover:bg-red-750"
             >
               <Delete />
             </button>

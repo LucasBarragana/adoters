@@ -42,3 +42,27 @@ export async function PUT(req, { params }) {
     return new Response(JSON.stringify({ message: error.message }), { status: 400 });
   }
 }
+
+
+export async function DELETE(req, { params }) {
+  await dbConnect();
+
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return new Response(JSON.stringify({ message: "Not authenticated" }), { status: 401 });
+  }
+
+  const { id } = params;
+
+  try {
+    const pet = await Pet.findOneAndDelete({ _id: id, creatorEmail: session.user.email });
+
+    if (!pet) {
+      return new Response(JSON.stringify({ message: "Pet not found or you don't have permission to delete this pet" }), { status: 404 });
+    }
+
+    return new Response(JSON.stringify({ message: "Pet deleted successfully" }), { status: 200 });
+  } catch (error) {
+    return new Response(JSON.stringify({ message: error.message }), { status: 400 });
+  }
+}

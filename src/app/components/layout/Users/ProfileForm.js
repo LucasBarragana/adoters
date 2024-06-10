@@ -31,7 +31,7 @@ export default function ProfileForm({ userData, onSubmit }) {
     e.preventDefault();
     onSubmit(user);
     if (user.admin) {
-        router.push('pages/users/info-shelter', undefined, { shallow: true });
+        router.push('/pages/users/info-shelter', undefined, { shallow: true });
     } else {
         router.push('/pages/adoption', undefined, { shallow: true });
     }
@@ -40,7 +40,7 @@ export default function ProfileForm({ userData, onSubmit }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto my-10">
       <div>
-        <label className="block text-gray-700 mb-2">Nome</label>
+        <label className="block text-gray-950 mb-2">Nome</label>
         <input
           type="text"
           name="name"
@@ -51,7 +51,7 @@ export default function ProfileForm({ userData, onSubmit }) {
         />
       </div>
       <div>
-        <label className="block text-gray-700 mb-2">Responsável - Caso de Abrigo</label>
+        <label className="block text-gray-910 mb-2">Responsável - Caso de Abrigo</label>
         <input
           type="text"
           name="responsable"
@@ -61,7 +61,7 @@ export default function ProfileForm({ userData, onSubmit }) {
         />
       </div>
       <div>
-        <label className="block text-gray-700 mb-2">CPF/CNPJ</label>
+        <label className="block text-gray-910 mb-2">CPF/CNPJ</label>
         <input
           type="text"
           name="document"
@@ -71,17 +71,18 @@ export default function ProfileForm({ userData, onSubmit }) {
         />
       </div>
       <div>
-        <label className="block text-gray-700 mb-2">Endereço Completo</label>
+        <label className="block text-gray-910 mb-2">Endereço Completo</label>
         <input
           type="text"
           name="address"
           value={user.address}
           onChange={handleChange}
           className="w-full border border-gray-300 p-2 rounded"
+          required
         />
       </div>
       <div>
-        <label className="block text-gray-700 mb-2">CEP</label>
+        <label className="block text-gray-910 mb-2">CEP</label>
         <input
           type="text"
           name="postalCode"
@@ -91,18 +92,19 @@ export default function ProfileForm({ userData, onSubmit }) {
         />
       </div>
       <div>
-        <label className="block text-gray-700 mb-2">Telefone Celular</label>
+        <label className="block text-gray-910 mb-2">Telefone Celular</label>
         <input
           type="text"
           name="phoneNumber"
           value={user.phoneNumber}
           onChange={handleChange}
           className="w-full border border-gray-300 p-2 rounded"
+          required
         />
       </div>
       <div>
-        <label className="block text-gray-700 mb-2">Cidade</label>
-        <select name="city" value={user.city} onChange={handleChange} className="w-full border border-gray-300 p-2 rounded">
+        <label className="block text-gray-910 mb-2">Cidade</label>
+        <select name="city" value={user.city} onChange={handleChange} className="w-full border border-gray-300 p-2 rounded" required>
           <option value="">Selecione uma Cidade</option>
           {cities.map(city => (
             <option key={city.value} value={city.value}>{city.label}</option>
@@ -110,7 +112,7 @@ export default function ProfileForm({ userData, onSubmit }) {
         </select>
       </div>
       <div>
-        <label className="block text-gray-700 mb-2">
+        <label className="flex text-gray-910 mb-2 text-sm gap-2 sm:flex text-gray-910 mb-2 text-base gap-2 md:flex text-gray-910 mb-2 text-xl gap-2 lg:flex text-gray-910 mb-2 text-xl gap-2">
           <input
             type="checkbox"
             name="admin"
@@ -120,7 +122,7 @@ export default function ProfileForm({ userData, onSubmit }) {
           Caso esteja criando um abrigo, clique aqui!
         </label>
       </div>
-      <button type="submit" className="bg-blue-500 text-gray-700 p-2 rounded hover:bg-blue-700 w-full">
+      <button type="submit" className="bg-blue-500 text-gray-910 p-2 rounded hover:bg-blue-910 w-full">
         Atualizar Perfil
       </button>
     </form>

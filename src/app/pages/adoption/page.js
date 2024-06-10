@@ -143,7 +143,7 @@ const AdoptionPage = () => {
           <div>
             <label className='text-white' htmlFor="city">Cidade</label>
             <select
-              className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
+              className='mt-1 block w-full p-2 bg-white text-gray-850 border border-gray-300 rounded-md'
               value={filter.city}
               onChange={e => setFilter({ ...filter, city: e.target.value })}
             >
@@ -156,7 +156,7 @@ const AdoptionPage = () => {
           <div>
             <label className='text-white' htmlFor="category">Categoria</label>
             <select
-              className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
+              className='mt-1 block w-full p-2 bg-white text-gray-850 border border-gray-300 rounded-md'
               value={filter.category}
               onChange={e => setFilter({ ...filter, category: e.target.value })}
             >
@@ -169,7 +169,7 @@ const AdoptionPage = () => {
           <div>
             <label className='text-white' htmlFor="size">Porte</label>
             <select
-              className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
+              className='mt-1 block w-full p-2 bg-white text-gray-850 border border-gray-300 rounded-md'
               value={filter.size}
               onChange={e => setFilter({ ...filter, size: e.target.value })}
             >
@@ -195,11 +195,11 @@ const AdoptionPage = () => {
             <div className="w-full h-40 overflow-hidden rounded-md flex justify-center items-center">
               <Image className="object-cover w-full h-full" src={pet.image} alt="petImage" width={160} height={160} />
             </div>
-            <h2 className="text-gray-800 text-2xl mt-2">{pet.name}</h2>
+            <h2 className="text-gray-850 text-2xl mt-2">{pet.name}</h2>
             <div className="mt-2">
               <div>
-                <p className="text-gray-800">
-                  <span className='font-semibold text-gray-800'>Sobre o pet:</span> <br />
+                <p className="text-gray-850">
+                  <span className='font-semibold text-gray-850'>Sobre o pet:</span> <br />
                   {showFullDescription[pet._id] ? pet.description : formatDescription(pet.description)}
                   {pet.description.length > 40 && (
                     <span className="text-blue-500 cursor-pointer" onClick={() => toggleDescription(pet._id)}>
@@ -209,12 +209,12 @@ const AdoptionPage = () => {
                 </p>
               </div>
               <div className='flex justify-between gap-4 mt-2 text-sm'>
-                <p className="text-gray-800"><span className='font-semibold text-gray-800'>Cidade:</span> <br></br>{pet.city}</p>
-                <p className="text-gray-800"><span className='font-semibold text-gray-800'>Categoria:</span><br></br> {pet.category}</p>
-                <p className="text-gray-800"><span className='font-semibold text-gray-800'>Porte:</span><br></br> {pet.size}</p>
+                <p className="text-gray-850"><span className='font-semibold text-gray-850'>Cidade:</span> <br></br>{pet.city}</p>
+                <p className="text-gray-850"><span className='font-semibold text-gray-850'>Categoria:</span><br></br> {pet.category}</p>
+                <p className="text-gray-850"><span className='font-semibold text-gray-850'>Porte:</span><br></br> {pet.size}</p>
               </div>
             </div>
-            <p className="text-gray-800 mt-5">
+            <p className="text-gray-850 mt-5">
               Abrigo: <Link href={`/pages/users/userPage/${pet.creatorEmail}`} className="text-black font-semibold underline">{pet.creator}</Link>
             </p>
             <div className='w-full bg-secundary text-white cursor-pointer flex justify-center align-center rounded-lg mt-4'>
@@ -248,7 +248,7 @@ const AdoptionPage = () => {
             <h1 className='font-semibold text-secundary'>UHULL, QUE FELICIDADE!</h1>
             <Image className="" src="/festa.png" alt="petImage" width={36} height={26} />
           </div>          
-          <p className="text-gray-800 mb-4">
+          <p className="text-gray-850 mb-4">
             Oi, me chamo {selectedPetName}, estou ansioso(a) para te conhecer e te encher de amor. 
             Caso tenha certeza que me quer, clique em <span className='font-semibold text-secundary'>Sim</span> e vou te esperar por 
             <span className='font-semibold text-secundary'>24h</span>.

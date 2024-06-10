@@ -173,14 +173,14 @@ export default function UserPageId() {
     <div className="mt-10 px-2">
       <div className="flex flex-col text-white mb-5 mt-10">
         <h1 className="text-4xl font-bold mb-4">Abrigo {user?.name}</h1>
-        <div className="hidden flex justify-center items-center text-sm text-gray-700 bg-white bg-opacity-80 backdrop-blur-lg shadow-lg w-full p-4 rounded-lg mt-2">
+        <div className="hidden flex justify-center items-center text-sm text-gray-750 bg-white bg-opacity-80 backdrop-blur-lg shadow-lg w-full p-4 rounded-lg mt-2">
           <p className="mr-4">ADOTADOS: 0</p>
           <div className="h-6 w-px bg-gray-400"></div>
           <p className="ml-4">Para adoção: {petsForAdoptionCount}</p>
         </div>
       </div>
       <div className="flex justify-between md:flex-row gap-4 p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg">
-        <div className="text-gray-700 flex flex-col">
+        <div className="text-gray-750 flex flex-col">
           <p className="text-xl mb-4 sm:text-2xl">Informações:</p>
           <p className="mb-2 text-xs sm:text-base">Responsável:<br></br> {user?.responsable}</p>
           <p className="mb-2 text-xs sm:text-base">Email:<br></br> {user?.email}</p>
@@ -188,7 +188,7 @@ export default function UserPageId() {
           <p className="mb-2 text-xs sm:text-base">Telefone:<br></br> {user?.phoneNumber}</p>
           <p className="mb-2 text-xs sm:text-base">Cidade:<br></br> {user?.city}</p>
         </div>
-        <div className="text-gray-700 flex flex-col">
+        <div className="text-gray-750 flex flex-col">
           <p className="text-xl mb-4 sm:text-2xl">Doações que precisamos:</p>
           <p className="mb-2 text-xs sm:text-base">Em dinheiro via pix:</p>
           <p className="mb-2 text-xs sm:text-base">{user?.document}</p>
@@ -209,7 +209,7 @@ export default function UserPageId() {
             <p>Nenhum item de doação necessário no momento.</p>
           )}
         </div>
-        <div className="hidden sm:block text-gray-700 flex flex-col">
+        <div className="hidden sm:block text-gray-750 flex flex-col">
           <p className="text-xl mb-4 sm:text-2xl">Horários</p>
           {user?.openingHours && user.openingHours.length > 0 ? (
             <ul className="mb-2 text-xs sm:text-base">
@@ -225,7 +225,7 @@ export default function UserPageId() {
         </div>
       </div>
       <div className='block sm:hidden'>
-        <div className="block justify-center items-center text-sm text-gray-700 bg-white bg-opacity-80 backdrop-blur-lg shadow-lg w-full p-4 rounded-lg mt-2">
+        <div className="block justify-center items-center text-sm text-gray-750 bg-white bg-opacity-80 backdrop-blur-lg shadow-lg w-full p-4 rounded-lg mt-2">
           <p className="text-xl mb-4 sm:text-2xl">Horários</p>
           <div className=''>          
               {user?.openingHours && user.openingHours.length > 0 ? (
@@ -243,7 +243,7 @@ export default function UserPageId() {
         </div>
       </div>   
       <div className="-mt-20 sm:mt-8">
-        <h2 className="text-2xl font-bold mb-4 mt-32 text-gray-700">Pets para adoção neste abrigo:</h2>
+        <h2 className="text-2xl font-bold mb-4 mt-32 text-gray-750">Pets para adoção neste abrigo:</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
           {pets.length > 0 ? (
             pets.map((pet) => (
@@ -281,7 +281,7 @@ export default function UserPageId() {
                         ? 'disabled'
                         : ''
                     } ${
-                      adoptionStatus[pet._id] && adoptionStatus[pet._id].status === 'Em Analise' ? 'text-gray-700' : 'text-white'
+                      adoptionStatus[pet._id] && adoptionStatus[pet._id].status === 'Em Analise' ? 'text-gray-750' : 'text-white'
                     }`} 
                     disabled={
                       adoptionStatus[pet._id] && adoptionStatus[pet._id].status === 'Em Analise'

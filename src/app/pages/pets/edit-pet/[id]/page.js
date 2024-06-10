@@ -78,9 +78,9 @@ export default function EditPet() {
   return (
     <div className="p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative">
       <div className="max-w-lg mx-auto my-10">
-        <h1 className="text-4xl font-bold mb-4 text-gray-700">Editar Pet</h1>
+        <h1 className="text-4xl font-bold mb-4 text-gray-750">Editar Pet</h1>
         <form onSubmit={handleUpdate} className="space-y-4">
-          <label className="block text-gray-700">Imagem</label>
+          <label className="block text-gray-750">Imagem</label>
           <div className="flex items-center">
             <EditableImage
               link={pet.image}
@@ -88,7 +88,7 @@ export default function EditPet() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 mb-2">Nome</label>
+            <label className="block text-gray-750 mb-2">Nome</label>
             <input
               placeholder="Nome do pet"
               type="text"
@@ -101,7 +101,7 @@ export default function EditPet() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 mb-2">Idade</label>
+            <label className="block text-gray-750 mb-2">Idade</label>
             <input
               placeholder="Idade aproximada do pet, caso seja possível"
               type="number"
@@ -111,7 +111,7 @@ export default function EditPet() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 mb-2">Descrição</label>
+            <label className="block text-gray-750 mb-2">Descrição</label>
             <textarea
               type="description"
               value={pet.description}
@@ -128,7 +128,7 @@ export default function EditPet() {
             />
           </div>
           <div>
-            <label className="block text-gray-700 mb-2">Tamanho</label>
+            <label className="block text-gray-750 mb-2">Tamanho</label>
             <select
               value={pet.size}
               onChange={(e) => setPet({ ...pet, size: e.target.value })}
@@ -144,7 +144,7 @@ export default function EditPet() {
             </select>
           </div>
           <div>
-            <label className="block text-gray-700 mb-2">Categoria</label>
+            <label className="block text-gray-750 mb-2">Categoria</label>
             <select
               value={pet.category}
               onChange={(e) => setPet({ ...pet, category: e.target.value })}
@@ -161,7 +161,7 @@ export default function EditPet() {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-gray-700 p-2 rounded hover:bg-blue-700"
+            className="bg-blue-500 text-gray-750 p-2 rounded hover:bg-blue-750"
           >
             Atualizar Pet
           </button>

@@ -76,14 +76,14 @@ export default function CreatePet() {
   return (
     <div className="p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative">
       <div className="max-w-lg mx-auto my-10">
-        <h1 className="text-4xl font-bold mb-4 text-gray-800">Criar Novo Pet</h1>
+        <h1 className="text-4xl font-bold mb-4 text-gray-850">Criar Novo Pet</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <label className="block text-gray-800">Imagem</label>
+          <label className="block text-gray-850">Imagem</label>
           <div className="flex items-center">
             <EditableImage link={image} setLink={setImage} />
           </div>
           <div>
-            <label className="block text-gray-800 mb-2">Nome</label>
+            <label className="block text-gray-850 mb-2">Nome</label>
             <input
               placeholder="Nome do pet"
               type="text"
@@ -94,7 +94,7 @@ export default function CreatePet() {
             />
           </div>
           <div>
-            <label className="block text-gray-800 mb-2">Idade</label>
+            <label className="block text-gray-850 mb-2">Idade</label>
             <input
               placeholder="Idade aproximada do pet, caso seja possível"
               type="number"
@@ -104,7 +104,7 @@ export default function CreatePet() {
             />
           </div>
           <div>
-            <label className="block text-gray-800 mb-2">Descrição</label>
+            <label className="block text-gray-850 mb-2">Descrição</label>
             <textarea
               type="description"
               value={description}
@@ -116,7 +116,7 @@ export default function CreatePet() {
             />
           </div>
           <div>
-            <label className="block text-gray-800 mb-2">Tamanho</label>
+            <label className="block text-gray-850 mb-2">Tamanho</label>
             <select
               value={size}
               onChange={(e) => setSize(e.target.value)}
@@ -132,7 +132,7 @@ export default function CreatePet() {
             </select>
           </div>
           <div>
-            <label className="block text-gray-800 mb-2">Tipo</label>
+            <label className="block text-gray-850 mb-2">Tipo</label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -149,7 +149,7 @@ export default function CreatePet() {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 text-gray-800 p-2 rounded hover:bg-blue-700"
+            className="bg-blue-500 text-gray-850 p-2 rounded hover:bg-blue-700"
           >
             Criar Pet
           </button>

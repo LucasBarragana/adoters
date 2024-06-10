@@ -18,10 +18,10 @@ export default function Header() {
       <div className="flex items-center justify-between mt-2">        
         <nav className="md:flex items-center gap-4 font-semibold">  
           <div className="hidden md:flex mr-10">
-            <Link href={"/"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Home</Link>
-            <Link href={"/pages/shelters"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Abrigos</Link>
-            <Link href={"/pages/adoption"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Adoção</Link>
-            <Link href={"/#about"} className="mr-8 md:text-white lg:text-blue-800 hover:text-blue-800">Sobre</Link>  
+            <Link href={"/"} id="inicio" className="mr-8 ">Home</Link>
+            <Link href={"/pages/shelters"} id="abrigo" className="mr-8 ">Abrigos</Link>
+            <Link href={"/pages/adoption"} id="adocao" className="mr-8 ">Adoção</Link>
+            <Link href={"/#about"} id="sobre" className="mr-8 ">Sobre</Link>  
           </div>         
         </nav>
       </div>

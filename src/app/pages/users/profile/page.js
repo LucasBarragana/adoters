@@ -48,9 +48,6 @@ export default function UserProfile() {
     }
   };
 
-  if (status === 'loading') {
-    toast.loading('Carregando...');
-  }
 
   if (status === 'unauthenticated') {
     return (
@@ -63,7 +60,7 @@ export default function UserProfile() {
 
   return (
     <div className="my-10 p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg">
-      <div className='block sm:flex justify-center align-center mt-4 items-center text-gray-700'>
+      <div className='block sm:flex justify-center align-center mt-4 items-center text-gray-950'>
         <h1 className="text-4xl font-bold mb-4">Meu Perfil</h1>
         {admin && (
           <div className="ml-4">

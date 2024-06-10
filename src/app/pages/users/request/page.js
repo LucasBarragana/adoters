@@ -35,9 +35,9 @@ export default function Request() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {requests.map(request => (
                 <div key={request._id} className="p-4 m-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg">
-                  <h2 className="text-gray-800 text-lg mb-2">{request.petName}</h2>
-                  <p className="text-gray-800 mb-2">Adotante: {request.adopterEmail}</p>
-                  <p className="text-gray-800">Status: {request.status}</p>
+                  <h2 className="text-gray-850 text-lg mb-2">{request.petName}</h2>
+                  <p className="text-gray-850 mb-2">Adotante: {request.adopterEmail}</p>
+                  <p className="text-gray-850">Status: {request.status}</p>
                 </div>
               ))}
             </div>

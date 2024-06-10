@@ -29,13 +29,8 @@ const UserProfilePage = () => {
     })
       .then(res => res.json())
       .then(data => setUserData(data))
-      .catch(error => console.error('Erro ao atualizar usuário:', error));
+      .catch(error => console.error('Erro ao atualizar usuário:', error));      
       
-      await toast.promise(handleProfileSubmit, {
-        loading: 'Carregando...',
-        success: 'Perfil Atualizado',
-        error: 'Ocorreu um problema',
-      });      
   };  
 
   const handleDonationsChange = (newDonations) => {

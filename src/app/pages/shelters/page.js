@@ -56,7 +56,7 @@ export default function UsersPage() {
                 <div>
                     <label className='text-white' htmlFor="city">Cidade</label>
                     <select
-                    className='mt-1 block w-full p-2 bg-white text-gray-800 border border-gray-300 rounded-md'
+                    className='mt-1 block w-full p-2 bg-white text-gray-850 border border-gray-300 rounded-md'
                     value={filter.city}
                     onChange={e => setFilter({ ...filter, city: e.target.value })}
                     >
@@ -73,9 +73,8 @@ export default function UsersPage() {
             </div>      
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-            <ul className='p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative hover:bg-white'>
                 {users.map(user => (
-                <li key={user._id} className="my-2">
+                <div className='p-4 border border-white rounded-lg bg-white bg-opacity-80 backdrop-blur-lg shadow-lg relative hover:bg-white' key={user._id}>
                     <Link href={`/pages/users/userPage/${user.email}`} passHref >
                     <p className='text-2xl mb-2'>{user.name}</p>                    
                     <p>{user.city} </p>
@@ -83,9 +82,8 @@ export default function UsersPage() {
                     <p>{user.email} </p>
                     <p>{user.phoneNumber} </p>
                     </Link>
-                </li>
+                </div>                
                 ))}
-            </ul>
         </div>
     </div>
   );
